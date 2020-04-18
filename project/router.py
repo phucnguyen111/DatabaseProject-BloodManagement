@@ -1,28 +1,27 @@
 import aiohttp
+from aiohttp import web
 import json
 
 class Router:
-    @get_request_json
+    #@get_request_json
     async def get_users(self, request, request_json):
-        return 1
+        return web.Response(text="get_user")
 
-    @get_request_json
+    #@get_request_json
     async def update_users(self, request, request_json):
-        return 1
+        return web.Response(text="get_user")
 
-    @get_request_json
+    #@get_request_json
     async def create_user(self, request, request_json):
-        return 1
+        return web.Response(text="get_user")
 
-    @get_request_json
+    #@get_request_json
     async def login(self, request, request_json):
-        return 1
+        return web.Response(text="get_user")
 
-    @get_request_json
-    async def check_login(self, request, request):
+    #@get_request_json
+    async def check_login(self, request, request_json):
         username = request_json.get('username')
         email = request_json.get('email')
-        try:
-            if (username is not None and email is not None):
-        except Exception as ex:
-            return fail(str(ex))
+        login = "Hello,  {} of email {}".format(username, email)
+        web.Response(text=login)

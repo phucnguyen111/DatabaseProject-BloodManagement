@@ -17,8 +17,6 @@ app.router.add_post('check_login', router_instance.check_login)
 
 app.on_startup.append(init_pg)
 
-for route in list(app.router.routes()):
-    if not isinstance(route.resource, web.StaticResource):
-        cors.add(route) 
+     
 app.on_cleanup.append(close_pg)
 web.run_app(app, host='0.0.0.0', port='8080')
