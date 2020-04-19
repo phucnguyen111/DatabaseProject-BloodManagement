@@ -6,17 +6,10 @@ from settings import config
 from db import close_pg, init_pg
 
 
-app = web.Application(client_max_size=20*1024**2)
+app = web.Application()
 app['config'] = config
-
-router_instance = Router()
-app.router.add_post('/login', router_instance.login)
-app.router.add_post('/users', router_instance.create_user)
-app.router.add_post('/get', router_instance.get_users)
-app.router.add_post('check_login', router_instance.check_login)
-
+setup_routes(app)
 app.on_startup.append(init_pg)
-
-     
 app.on_cleanup.append(close_pg)
-web.run_app(app, host='0.0.0.0', port='8080')
+
+web.run_app(app)

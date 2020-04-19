@@ -5,6 +5,7 @@ Prerequisite:
 + Virtualenv (hoặc dùng anaconda)
 + psql 
 
+
 Nên sử dụng virtualenv để có thể control được các lib chuẩn bị tải ở dưới 
 
 Nếu không mình có thể tự tạo virtualenv rồi thay các lệnh dưới thành 
