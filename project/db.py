@@ -18,4 +18,4 @@ async def init_pg(app):
 
 async def close_pg(app):
     app['db'].close()
-    await app['db'].wait_closeD()
+    await app['db'].wait_closed()
