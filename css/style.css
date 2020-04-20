@@ -229,6 +229,9 @@ to {bottom: 0; opacity: 0;}
     background: var(--primary-color);
     color:#fff;
     text-align: center;
+    bottom: 0;
+    width: 100%;
+    clear: both;
 }
 .footer a{
     color: #fff !important;
