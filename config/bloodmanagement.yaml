@@ -1,0 +1,9 @@
+postgres:
+  database: BloodBank
+  user: postgres
+  password: ha3171999
+  host: localhost
+  port: 5432
+  minsize: 1
+  maxsize: 5
+  
