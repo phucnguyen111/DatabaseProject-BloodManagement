@@ -58,7 +58,16 @@
                     </div>
                     <div class="w3-half">
                         <label>Personal ID</label>
-                        <input type="number" class="w3-input w3-border" id="pid" name="pid">
+                        <input 
+                            type="number" 
+                            onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" 
+                            class="w3-input w3-border" 
+                            name="phone" 
+                            id="phone"
+                            class="w3-input w3-border" 
+                            id="pid" 
+                            name="pid"
+                        >
                     </div>
                 </div>
                 <div class="w3-row-padding">
@@ -78,7 +87,16 @@
                 <div class="w3-row-padding">
                     <div class="w3-half">
                         <label>Phone Number</label>
-                        <input type="tel" pattern="[0-9]{10}" class="w3-input w3-border" name="phone" id="phone">
+                        <input 
+                            type="number" 
+                            onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" 
+                            class="w3-input w3-border" 
+                            name="phone" 
+                            id="phone"
+                            class="w3-input w3-border" 
+                            id="pid" 
+                            name="pid"
+                        >
                     </div>
                     <div class="w3-half">
                         <label>Email</label>
