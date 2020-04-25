@@ -4,6 +4,15 @@ import aiohttp_jinja2
 @aiohttp_jinja2.template('index.html')
 async def index(request):
     # simplest view
-    return web.Response(text="Blood Management Application")
+    return {'name': 'Andrew', 'surname': 'Svetlov'}
     # create route for this
 
+
+@aiohttp_jinja2.template('register.html')
+async def register(request):
+    return {'name': 'Andrew', 'surname': 'Svetlov'}
+
+
+@aiohttp_jinja2.template('request.html')
+async def request(request):
+    return {'name': 'Andrew', 'surname': 'Svetlov'}
