@@ -1,0 +1,4 @@
+Donor(DonorID, Name, Addressm MedicalReport, Email, ContactNumber, BloodGroup)
+Blood(BloodID, Amount, Status)
+Hospital(HospitalID, Name, Address, ContactNumber, Email)
+
