@@ -28,7 +28,7 @@
             <div class="w3-container header" style="margin-left:6%" id="header">
                 <img src="images/icon.jpg"  class="logo" />
                 <a href="index.html" class="header-nav">Home</a>
-                <a href="register.html" class="header-nav">Register</a>
+                <a href="register.html" class="header-nav">Register as Donor</a>
                 <a href="request.html" class="header-nav">Request</a>
             </div>
             <div class="w3-container">
@@ -37,7 +37,7 @@
                         <h4>Blood Request Form</h4>
                     </header>
                     <hr>
-                    <form method="post" id="ajaxForm">
+                    <form method="POST" action="{{url_for('request')}}" id="ajaxForm">
                         <div class="w3-row-padding">
                             <div class="w3-half">
                                 <input type="hidden" name="origin" value="register">
