@@ -1,27 +1,48 @@
 import aiohttp
 from aiohttp import web
 import json
+from aiohttp.web import json_response
+
 
 class Router:
-    #@get_request_json
-    async def get_users(self, request, request_json):
-        return web.Response(text="get_user")
+    async def create_user(self, request):
+        data = await request.json()
+        fname = data['fname']
+        lname = data['lname']
+        birthday = data['birthday']
+        pid = data['pid']
+        gender = data['gender']
+        address = data['address']
+        phone = data['phone']
+        blood_group = data['blood-group']
+        hospital = data['hospital']
 
-    #@get_request_json
-    async def update_users(self, request, request_json):
-        return web.Response(text="get_user")
+        resp = "PID {} Name {} Hospital {}".format(pid, fname, hospital)
+        return web.Response(text=resp) 
 
-    #@get_request_json
-    async def create_user(self, request, request_json):
-        return web.Response(text="get_user")
+    async def login(self, request):
+        data = await request.json()
+        fname = data['fname']
+        lname = data['lname']
+        resp = "PID {} Name {} Hospital {}".format(pid, name, hospital)
+        return web.Response(text=resp) 
 
-    #@get_request_json
-    async def login(self, request, request_json):
-        return web.Response(text="get_user")
+    async def check_login_user(self, request):
+        data = await request.json()
+        for key in data.keys():
+            print("key: ", key)
+        fname = data['fname']
+        lname = data['lname']
+        pid = data['pid']
+        
+        return json_response({'status': 'success', 'data': pid}, status=200)
 
-    #@get_request_json
-    async def check_login(self, request, request_json):
-        username = request_json.get('username')
-        email = request_json.get('email')
-        login = "Hello,  {} of email {}".format(username, email)
-        web.Response(text=login)
+    async def request_blood(self, request):
+        hname = data['hname']
+        haddress = data['haddress']
+        hnum = data['hnum']
+        bloodgroup = data['blood-group']
+        amount = data['amount']
+        req = "Hello {} hospital of address {} and phone {}. {} of blood group {} is available ".format(hname, haddress, hnum, amount, bloodgroup)
+        return web.Response(text=req)
+    
