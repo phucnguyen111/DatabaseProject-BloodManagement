@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register as a doner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="images/icon.jpg" >
+    <link rel="stylesheet" type="text/css" media="screen" href="css/w3.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <style>
+        input {
+            margin-bottom: 20px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="content-wrap">
+            <div class="humburger-out" onclick="navOpen()">
+                <div class="humburger-in"></div>
+                <div class="humburger-in"></div>
+                <div class="humburger-in"></div>
+            </div>
+            <div class="w3-container header" style="margin-left:6%" id="header">
+                <img src="images/icon.jpg"  class="logo" />
+                        <a href="index.html" class="header-nav">Home</a>
+                        <a href="register.html" class="header-nav">Register</a>
+                        <a href="request.html" class="header-nav">Request</a>
+            </div>
+
+            <div class="w3-container">
+                <div class="input-box w3-card-2">
+                    <header class="w3-center">
+                        <h4>Registration Form</h4>
+                    </header>
+                    <hr>
+
+                    <form method="post" id="ajaxForm">
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <input type="hidden" name="origin" value="register">
+                                <label>First Name</label>
+                                <input type="text" class="w3-input w3-border" name="fname" id="fname" required>
+                            </div>
+                            <div class="w3-half">
+                                <label>Last Name</label>
+                                <input type="text" class="w3-input w3-border" name="lname" id="lname" required>
+                            </div>
+                        </div>
+                        
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <label for="birthday">Date of Birth</label>
+                                <input type="date" class="w3-input w3-border" id="birthday" name="birthday" required>
+                            </div>
+                            <div class="w3-half">
+                                <label>Personal ID</label>
+                                <input 
+                                    type="number" class="w3-input w3-border" id="pid" name="pid" required>
+                            </div>
+                        </div>
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <label>Gender</label>
+                                <select name="gender" id="gender" class="w3-input w3-border" required>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            <div class="w3-half">
+                                <label>Address</label>
+                                <input type="text" class="w3-input w3-border" name="address" id="address" required>
+                            </div>
+                        </div>
+                        
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <label>Phone Number</label>
+                                <input type="number" pattern="[0-9]{10}"  class="w3-input w3-border" name="phone" id="phone" required>
+                            </div>
+                            <div class="w3-half">
+                                <label>Email</label>
+                                <input type="email" class="w3-input w3-border" name="email" id="email">
+                            </div>
+                        </div>
+
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <label>Blood Group</label>
+                                <select name="blood_group" id="blood_group" class="w3-input w3-border" required>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                    <option>A+</option>
+                                    <option>B+</option>
+                                    <option>A-</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                </select>
+                            </div>
+                            <div class="w3-half">
+                                <label>Donate at Hospital</label>
+                                <input type="text" class="w3-input w3-border" name="hospital" id="hospital" required>
+                            </div>
+                        </div>
+                            
+                            <br>
+                        
+                        
+                        <div class="w3-center">
+                            <input type="submit" class="w3-button w3-round-large w3-padding-large blue-button" value="Submit" style="margin-right: 1%" >
+                            <input type="reset" class="w3-button w3-round-large w3-padding-large red-button" value="Reset" style="margin-left: 1%" >                    
+                        </div>
+                    </form>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <footer class="footer">
+        
+        <a>
+            Made by Hong Einh, Viet Hoang, Hung Nguyen, and Phuc Nguyen <br> Database Project © Copyright 2020 All Right Reserved
+        </a>
+    </footer>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
