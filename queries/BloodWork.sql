@@ -1,19 +1,29 @@
+--QUERY TO DROP ALL TABLE
+DO $$ DECLARE
+  r RECORD;
+BEGIN
+  FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = current_schema()) LOOP
+    EXECUTE 'DROP TABLE ' || quote_ident(r.tablename) || ' CASCADE';
+  END LOOP;
+END $$;
+--END
+
 CREATE TABLE Donor (
-	DonorID SERIAL NOT NULL PRIMARY KEY,
+	DonorID VARCHAR(25) NOT NULL PRIMARY KEY, --- PersonalID_Date
+	PersonalID BIGINT,
 	Name VARCHAR(50),
 	Gender VARCHAR(10),
 	--DateOfBirth DATE,
 	Address VARCHAR(100),
 	Email VARCHAR(30),
-	ContactNumber VARCHAR(15),
-	BloodGroup VARCHAR(5),
-	MedicalReport VARCHAR(200)
+	ContactNumber VARCHAR(15)
 );
 
 CREATE TABLE Blood (
-	BloodID SERIAL NOT NULL PRIMARY KEY,
+	BloodID VARCHAR(25) NOT NULL PRIMARY KEY,
 	Amount INT,
-	Status VARCHAR(20)
+	Status VARCHAR(20),
+	DonationDate DATE
 );
 
 CREATE TABLE Hospital (
@@ -24,37 +34,55 @@ CREATE TABLE Hospital (
 	Email VARCHAR(30)
 );
 
-CREATE TABLE BloodProduct(
-ProductID SERIAL NOT NULL PRIMARY KEY,
-Name VARCHAR(50),
-Type VARCHAR(10),
-Amount INT
+CREATE TABLE BloodGroup(
+	Type VARCHAR(10) PRIMARY KEY,
+	TotalAmount INT NOT NULL
 );
 
 CREATE TABLE Donate (
-	DonorID INT NOT NULL,
-	BloodID INT NOT NULL,
-	DonationDate DATE,
+	DonorID VARCHAR(25),
+	BloodID VARCHAR(25),
 	CONSTRAINT PrimaryKeyDonate PRIMARY KEY (DonorID, BloodID),
-	CONSTRAINT ForeignKeyDonate1 FOREIGN KEY (DonorID) REFERENCES Donor(DonorID),
+	CONSTRAINT ForeignKeyDonate1 FOREIGN KEY (DonorID) REFERENCES Donor(DonorID)
+	ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT ForeignKeyDonate2 FOREIGN KEY(BloodID) REFERENCES Blood(BloodID)
+	ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE BelongsTo (
-	BloodID INT NOT NULL,
-	ProductID INT NOT NULL,
+	BloodID VARCHAR(25) NOT NULL,
+	Type VARCHAR(10) NOT NULL,
 
-	CONSTRAINT PrimaryKeyBelongsTo PRIMARY KEY (ProductID, BloodID),
-	CONSTRAINT ForeignKeyBelongsTo1 FOREIGN KEY (ProductID) REFERENCES BloodProduct(ProductID),
+	CONSTRAINT PrimaryKeyBelongsTo PRIMARY KEY (Type, BloodID),
+	CONSTRAINT ForeignKeyBelongsTo1 FOREIGN KEY (Type) REFERENCES BloodGroup(Type)
+	ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT ForeignKeyBelongsTo2 FOREIGN KEY(BloodID) REFERENCES Blood(BloodID)
+	ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE DistributeBlood (
-	ProductID INT NOT NULL,
+	Type VARCHAR(10) NOT NULL,
 	HospitalID INT NOT NULL,
 	DistributionDate DATE,
 
-	CONSTRAINT PrimaryKeyDistributeBlood PRIMARY KEY (ProductID, HospitalID),
-	CONSTRAINT ForeignKeyDistributeBlood1 FOREIGN KEY (ProductID) REFERENCES BloodProduct(ProductID),
+	CONSTRAINT PrimaryKeyDistributeBlood PRIMARY KEY (Type, HospitalID),
+	CONSTRAINT ForeignKeyDistributeBlood1 FOREIGN KEY (Type) REFERENCES BloodGroup(Type)
+	ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT ForeignKeyDistributeBlood2 FOREIGN KEY (HospitalID) REFERENCES Hospital(HospitalID)
+	ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+INSERT INTO BloodGroup VALUES ('O+','0'),('O-','0'),('A+','0'),('A-','0'),('B+','0'),('B-','0'),('AB+','0'),('AB-','0');
+UPDATE BloodGroup SET TotalAmount = 10 WHERE Type = 'O+';
+SELECT * FROM BloodGroup;
+SELECT * FROM Donor;
+SELECT * FROM Blood;
+SELECT * FROM Donate;
+
+--DELETE ALL DATA FROM TABLES
+TRUNCATE TABLE Donate CASCADE;
+TRUNCATE TABLE Donor CASCADE;
+TRUNCATE TABLE Blood CASCADE;
+TRUNCATE TABLE BloodGroup CASCADE;
+									
+			

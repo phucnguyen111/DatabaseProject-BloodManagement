@@ -16,7 +16,6 @@ try:
 
 except (Exception, psycopg2.Error) as error:
     print("Error while connecting to PostgreSQL", error)
-    print("Error while creating PostgreSQL table", error)
 finally:
     if (connection):
         cursor.close()
