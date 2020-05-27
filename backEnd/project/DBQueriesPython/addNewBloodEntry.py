@@ -1,9 +1,10 @@
 import psycopg2
 
-from Hung.backEnd.project.DBQueriesPython.addDonorDB import addDonor
-from Hung.backEnd.project.DBQueriesPython.addBloodDB import addBlood
-from Hung.backEnd.project.DBQueriesPython.calculateMonthDiffDB import calculateMonthDiff
-from Hung.backEnd.project.DBQueriesPython.addDonateDB import addDonate
+from addDonorDB import addDonor
+from addBloodDB import addBlood
+from calculateMonthDiffDB import calculateMonthDiff
+from addDonateDB import addDonate
+
 
 def addNewBloodEntry(donDonID, donPerID, donName, donGender, donAddress, donEmail, donCont, bID, bAmount, bStatus):
     try:

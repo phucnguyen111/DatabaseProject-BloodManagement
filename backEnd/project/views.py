@@ -3,9 +3,7 @@ import aiohttp_jinja2
 
 @aiohttp_jinja2.template('index.html')
 async def index(request):
-    # simplest view
     return {'name': 'Andrew', 'surname': 'Svetlov'}
-    # create route for this
 
 
 @aiohttp_jinja2.template('register.html')

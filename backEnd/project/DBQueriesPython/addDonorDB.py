@@ -1,5 +1,9 @@
 import psycopg2
 
+'''
+This function is used to populate the addDonor table when donor register blood donation.
+Will be used in add new blood entry
+'''
 
 
 def addDonor(donDonID, donPerID, donName, donGender, donAddress, donEmail, donCont):
