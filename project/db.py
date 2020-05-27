@@ -20,7 +20,7 @@ async def init_pg(app):
 async def close_pg(app):
     app['db'].close()
     await app['db'].wait_closed()
-
+'''
 def create_donor(name, gender, address, email, contact, bloodgroup, medicalRecord):
     try:
         connection = psycopg2.connect(user="postgres",
@@ -74,3 +74,4 @@ def delete_donor(donID):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
+'''
