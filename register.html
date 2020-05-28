@@ -40,7 +40,9 @@
                     </header>
                     <hr>
 
-                    <form method="POST" action="{{url_for('register')}}" id="ajaxForm">
+                    
+
+                    <form method="POST" action="{{url_for('register')}}" id="jsonForm">
                         <div class="w3-row-padding">
                             <div class="w3-half">
                                 <input type="hidden" name="origin" value="register">
@@ -59,9 +61,10 @@
                         
                         <div class="w3-row-padding">
                             <div class="w3-half">
-                                <label for="birthday">Date of Birth</label>
-                                <input type="date" class="w3-input w3-border" id="birthday" name="birthday" required>
+                                <label>Address</label>
+                                <input type="text" class="w3-input w3-border" name="address" id="address" required>
                             </div>
+                            
                             <div class="w3-half">
                                 <label>Personal ID</label>
                                 <input 
@@ -69,23 +72,25 @@
                             </div>
                         </div>
                         <div class="w3-row-padding">
+                             <div class="w3-half">
+                                <label>Email</label>
+                                <input type="email" class="w3-input w3-border" name="email" id="email">
+                            </div>
                             
                             <div class="w3-half">
-                                <label>Address</label>
-                                <input type="text" class="w3-input w3-border" name="address" id="address" required>
-                            </div>
-                            <div class="w3-half">
-                                <label>Phone Number</label>
+                                <label>Contact Number</label>
                                 <input type="number" pattern="[0-9]{10}"  class="w3-input w3-border" name="phone" id="phone" required>
                             </div>
                         </div>
                         
+                        
+
+                        
+
+                       
+
                         <div class="w3-row-padding">
                             
-                            <div class="w3-half">
-                                <label>Email</label>
-                                <input type="email" class="w3-input w3-border" name="email" id="email">
-                            </div>
                             <div class="w3-half">
                                 <label>Blood Group</label>
                                 <select name="blood_group" id="blood_group" class="w3-input w3-border" required>
@@ -98,13 +103,30 @@
                                     <option>AB+</option>
                                     <option>AB-</option>
                                 </select>
-                            </div>
-                        </div>
+                            </div> 
 
-                        
-                            
-                            <br>
-                        
+                            <div class="w3-half">
+                                <label>Amount</label>
+                                <select name="donate_amount" id="donate_amount" class="w3-input w3-border" required>
+                                    <option>250 ml</option>
+                                    <option>350 ml</option>
+                                    <option>450 ml</option>
+                                </select>
+                                 
+                                
+                            </div> 
+
+        
+                        </div>
+                        <!--
+
+                        <div class="w3-row">
+                            <label>Status</label>
+                            <input type="text" class="w3-input w3-border" name="status" id="status" required>
+                        </div>-->
+
+                        <br>
+                        <br>
                         
                         <div class="w3-center">
                             <input type="submit" class="w3-button w3-round-large w3-padding-large blue-button" value="Submit" style="margin-right: 1%" >

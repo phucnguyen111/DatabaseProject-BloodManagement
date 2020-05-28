@@ -37,7 +37,7 @@
                         <h4>Blood Request Form</h4>
                     </header>
                     <hr>
-                    <form method="POST" action="{{url_for('request')}}" id="ajaxForm">
+                    <form method="POST" action="{{url_for('request')}}" id="jsonForm">
                         <div class="w3-row-padding">
                             <div class="w3-half">
                                 <input type="hidden" name="origin" value="register">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="w3-half">
                                 <label>Amount</label>
-                                <input type="num" class="w3-input w3-border" name="amount" id="amount" required>
+                                <input type="number" class="w3-input w3-border" name="amount" id="amount" required>
                             </div>
                         </div>
                         <br>
