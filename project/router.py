@@ -4,8 +4,12 @@ import json
 from aiohttp.web import json_response
 
 from db import create_donor
-
+from DBQueriesPython.addNewBloodEntry import addNewBloodEntry
 class Router:
+
+    '''
+    For blood group and medical record, _ doesnt work but - works
+    '''
     async def create_user(self, request):
         data = await request.json()
         fname = data['fname']
@@ -14,12 +18,12 @@ class Router:
         gender = data['gender']
         address = data['address']
         phone = data['phone']
-        blood_group = data['blood-group']
-        medicalRecord = data['medical-record']
+        bloodgroup = data['blood_group']
+        medicalRecord = data['medical_record']
         email = data['email']
 
-        create_donor(fname + lname, gender, address, email, phone, blood_group, medicalRecord)
-        resp = "Email {} Name {} blood {}".format(email, fname, blood_group)
+        create_donor(fname + lname, gender, address, email, phone, blood-group, medicalRecord)
+        resp = "Email {} Name {} blood {}".format(email, fname, blood-group)
         return web.Response(text=resp) 
 
     async def login(self, request):
@@ -39,12 +43,42 @@ class Router:
         
         return json_response({'status': 'success', 'data': pid}, status=200)
 
+    '''
+    This function process request_blood request from hospital
+    It will call for an equivalent method to add to check from database
+    NOTE: Havent been implemented to Database
+    Temporarily okei
+    '''
     async def request_blood(self, request):
-        hname = data['hname']
-        haddress = data['haddress']
-        hnum = data['hnum']
-        bloodgroup = data['blood-group']
+        data = await request.json()
+        hname = data['h_name']
+        address = data['h_address']
+        phone = data['h_num']
+        bloodgroup = data['blood_group']
         amount = data['amount']
-        req = "Hello {} hospital of address {} and phone {}. {} of blood group {} is available ".format(hname, haddress, hnum, amount, bloodgroup)
-        return web.Response(text=req)
+        email = data['h_email']
+
+        #addNewBloodEntry(1, pid, fname, gender, address, email, phone, 123, amount, "Hello")
+        resp = "Email {} Name {} blood {} amount {}".format(email, hname, bloodgroup, amount)
+        return web.Response(text=resp) 
     
+    '''
+    This function is used to create new register_blood_donation whenever 
+    a donor register. It takes the user info and pass to a function for query
+    NOTE: Need modification according to fields in frontend
+    Dang bia bua de test --> Run ok 
+    '''
+    async def register_blood_donation(self, request):
+        data = await request.json()
+        fname = data['fname']
+        pid = data['pid']
+        gender = data['gender']
+        address = data['address']
+        phone = data['phone']
+        bloodgroup = data['blood_group']
+        amount = data['donate_amount']
+        email = data['email']
+
+        addNewBloodEntry(1, pid, fname, gender, address, email, phone, 123, amount, "Hello")
+        resp = "Email {} Name {} blood {} amount {}".format(email, fname, bloodgroup, amount)
+        return web.Response(text=resp) 

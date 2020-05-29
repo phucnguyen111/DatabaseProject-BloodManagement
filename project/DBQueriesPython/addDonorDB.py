@@ -9,10 +9,10 @@ Will be used in add new blood entry
 def addDonor(donDonID, donPerID, donName, donGender, donAddress, donEmail, donCont):
     try:
         connection = psycopg2.connect(user="postgres",
-                                      password="01689240658",
+                                      password="ha3171999",
                                       host="localhost",
                                       port="5432",
-                                      database="BloodWork")
+                                      database="BloodBank")
         cursor = connection.cursor()
 
         print("Adding donor: ",donDonID,"~",donPerID,"~",donName,"~"+donGender,"~",donAddress,"~",donEmail,"~",donCont)

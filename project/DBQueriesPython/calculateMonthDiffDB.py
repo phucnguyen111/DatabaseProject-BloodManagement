@@ -3,10 +3,10 @@ import psycopg2
 def calculateMonthDiff (donPerID):
     try:
         connection = psycopg2.connect(user="postgres",
-                                      password="01689240658",
+                                      password="ha3171999",
                                       host="localhost",
                                       port="5432",
-                                      database="BloodWork")
+                                      database="BloodBank")
         cursor = connection.cursor()
         sql_get_latest_date_query = """select max(DonationDate) 
                                     from Donor, Donate, Blood 

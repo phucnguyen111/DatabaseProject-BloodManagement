@@ -10,7 +10,7 @@ def addDonate(donDonID, bID):
                                       password="01689240658",
                                       host="localhost",
                                       port="5432",
-                                      database="BloodWork")
+                                      database="BloodBank")
 
         cursor = connection.cursor()
 

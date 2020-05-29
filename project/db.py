@@ -20,6 +20,10 @@ async def init_pg(app):
 async def close_pg(app):
     app['db'].close()
     await app['db'].wait_closed()
+
+'''
+This function is to create new donor
+NOTE: Need to be moved to DBQueries
 '''
 def create_donor(name, gender, address, email, contact, bloodgroup, medicalRecord):
     try:
@@ -31,7 +35,7 @@ def create_donor(name, gender, address, email, contact, bloodgroup, medicalRecor
         cursor = connection.cursor()
 
 
-        print("Adding donor: ",name,"~"+gender,"~",address,"~",email,"~",contact,"~",bloodgroup,"~",medicalRecord)
+        print("Adding donor: " + name +  "~" + gender + "~" + address + "~" + email + "~" + contact + "~" + bloodgroup + "~" + medicalRecord)
 
         sql_insert_query = """insert into Donor(Name, Gender, Address, Email, ContactNumber, BloodGroup, MedicalReport) values(%s,%s,%s,%s,%s,%s,%s)"""
         record_to_insert = (name, gender, address, email, contact, bloodgroup, medicalRecord)
@@ -74,4 +78,3 @@ def delete_donor(donID):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-'''
