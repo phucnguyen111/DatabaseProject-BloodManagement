@@ -37,7 +37,8 @@
                         <h4>Blood Request Form</h4>
                     </header>
                     <hr>
-                    <form method="POST" action="{{url_for('request')}}" id="jsonForm">
+                    <!--form method="POST" action="{{url_for('request')}}" id="jsonForm"-->
+                    <form method="POST" id="jsonForm">
                         <div class="w3-row-padding">
                             <div class="w3-half">
                                 <input type="hidden" name="origin" value="register">
@@ -97,7 +98,7 @@
             Made by Hong Einh, Viet Hoang, Hung Nguyen, and Phuc Nguyen <br> Database Project © Copyright 2020 All Right Reserved
         </a>
     </footer>
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <!--script src="js/jquery-3.4.1.min.js"></script>
     <script>
         function navOpen() {
             if ($("#header").hasClass('visibler'))
@@ -105,7 +106,8 @@
             else
                 $("#header").addClass('visibler');
         }
-    </script>
+    </script-->
+    <script src="js/collectInput.js"></script>
 </body>
 
 </html>
