@@ -1,0 +1,44 @@
+Set up: Cài đặt các lib để chạy được chương trình 
+Prerequisite:
++ Python
++ Pip
++ Virtualenv (hoặc dùng anaconda)
++ psql 
+
+
+Nên sử dụng virtualenv để có thể control được các lib chuẩn bị tải ở dưới 
+
+Nếu không mình có thể tự tạo virtualenv rồi thay các lệnh dưới thành 
+==> pip install <tên thư viện>
+Các lệnh thay thế sẽ có --- đầu dòng để dễ phân biệt
+
+1. library for client/server session: aiohttp
+	conda install -c conda-forge aiohttp
+	--- pip install aiohttp
+
+
+2. pyyaml:  để tạo config file
+	conda install -c anaconda pyyaml
+	--- pip install pyyaml
+
+
+3. aiopg[sa]: thư viện để truy cập postgre database từ asyncio framework
+	conda install -c anaconda aiopg[sa]	
+	--- pip install aiopg[sa]
+
+4. check database 
+Check xem mình đang dùng port nào cho postgres
+
+	sudo netstat -plunt | grep postgres
+
+--> Windows có netstat by default
+--> Ubuntu 18.04 DFS phải tải thêm: 	sudo apt-get install net-tools
+--> Port default của postgres thường là 5432, tuy nhiên thêm bước này cho chắc
+Sau đó nhập lệnh dưới để check xem có database không
+
+	psql -U postgres -h localhost -p <port> -d <tên database>
+
+Sau khi có, nếu mà port khác 5432 thì thay đổi giá trị của port trong file config.yaml
+Đổi tên database nếu khác, đổi mật khẩu theo mật khẩu đặt cho server
+
+
