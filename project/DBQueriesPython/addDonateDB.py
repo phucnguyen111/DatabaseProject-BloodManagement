@@ -6,11 +6,11 @@ Will be used in add new blood entry
 
 def addDonate(donDonID, bID):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="01689240658",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "NVHplay.99.02.21",
+                                      host = "localhost",
+                                      port = "9221",
+                                      database = "BloodDonateProject")
 
         cursor = connection.cursor()
 

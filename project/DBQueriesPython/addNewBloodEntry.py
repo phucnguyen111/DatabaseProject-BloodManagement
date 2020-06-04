@@ -14,11 +14,11 @@ NOTE: need to return query status:
 
 def addNewBloodEntry(donDonID, donPerID, donName, donGender, donAddress, donEmail, donCont, bID, bAmount, bStatus):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user = "postgres",
+                                      password = "NVHplay.99.02.21",
+                                      host = "localhost",
+                                      port = "9221",
+                                      database = "BloodDonateProject")
         cursor = connection.cursor()
         # tim xem donor da ton tai chua
         sql_find_donor_query = """select * from Donor where PersonalID = %s"""

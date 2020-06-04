@@ -1,10 +1,10 @@
 
 
 /////////////////////////////////////////
-
+//connect to back end Nguyen Viet Hoang lam file python
 // this is the id of the form
 $(document).ready(() => {
-  $("#ajaxForm").submit(function (e) {
+  $("#jsonForm").submit(function (e) {
     showToast("Uploading...");
 
     e.preventDefault();
@@ -21,7 +21,7 @@ $(document).ready(() => {
       }
     });
 
-    $("#ajaxForm").trigger("reset");
+    $("#jsonForm").trigger("reset");
   });
 });
 

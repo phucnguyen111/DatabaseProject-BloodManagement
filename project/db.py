@@ -1,8 +1,8 @@
 import aiopg.sa
 import psycopg2
 
-#__all__ = ['Donor', 'Blood', 'Hospital', 'BloodBank', 'Donor_Donate_Blood',
-#           'Blood_Belongs_To_BloodBank', 'BloodBank_ManageInfo_Donor', 'BloodBank_DistributeBlood_Hospital']
+#__all__ = ['Donor', 'Blood', 'Hospital', 'BloodDonateProject', 'Donor_Donate_Blood',
+#           'Blood_Belongs_To_BloodDonateProject', 'BloodDonateProject_ManageInfo_Donor', 'BloodDonateProject_DistributeBlood_Hospital']
 
 async def init_pg(app):
     conf = app['config']['postgres']
@@ -28,10 +28,10 @@ NOTE: Need to be moved to DBQueries
 def create_donor(name, gender, address, email, contact, bloodgroup, medicalRecord):
     try:
         connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
+                                      password="NVHplay.99.02.21",
                                       host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+                                      port="9221",
+                                      database="BloodDonateProject")
         cursor = connection.cursor()
 
 
@@ -57,10 +57,10 @@ def create_donor(name, gender, address, email, contact, bloodgroup, medicalRecor
 def delete_donor(donID):
     try:
         connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
+                                      password="NVHplay.99.02.21",
                                       host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+                                      port="9221",
+                                      database="BloodDonateProject")
         cursor = connection.cursor()
 
         print("Deleting donor with the ID: ", donID)
