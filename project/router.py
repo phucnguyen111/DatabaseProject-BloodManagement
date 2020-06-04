@@ -51,12 +51,12 @@ class Router:
     '''
     async def request_blood(self, request):
         data = await request.json()
-        hname = data['h_name']
-        address = data['h_address']
-        phone = data['h_num']
+        hname = data['h-name']
+        address = data['h-address']
+        phone = data['h-num']
         bloodgroup = data['blood_group']
         amount = data['amount']
-        email = data['h_email']
+        email = data['h-email']
 
         #addNewBloodEntry(1, pid, fname, gender, address, email, phone, 123, amount, "Hello")
         resp = "Email {} Name {} blood {} amount {}".format(email, hname, bloodgroup, amount)
