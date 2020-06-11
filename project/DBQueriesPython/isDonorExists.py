@@ -32,4 +32,5 @@ def isDonorExists(donPerID):
             connection.close()
             print("PostgreSQL connection is closed")
 
-isDonorExists(1199232319)
+isDonorExists(119923231)
+isDonorExists(123456)
