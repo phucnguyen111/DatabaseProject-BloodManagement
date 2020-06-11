@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68ce194a-5c22-441c-afe3-4f88321701ee" name="Default Changelist" comment="" />
+    <list default="true" id="5c9ed666-d442-48a3-9e62-b89c5f973494" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/addBloodDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/addBloodDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/addDonateDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/addDonateDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/addDonorDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/addDonorDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/addNewBloodEntry.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/addNewBloodEntry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/calculateMonthDiffDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/calculateMonthDiffDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/checkConnectionDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/checkConnectionDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/deleteBloodDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/deleteBloodDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/deleteDonorDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/deleteDonorDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/isDonorExistsDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/isDonorExistsDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/DBQueriesPython/requestBloodDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/DBQueriesPython/requestBloodDB.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\DBProjects\DatabaseProject\.idea" />
+      </set>
     </option>
   </component>
-  <component name="ProjectId" id="1bFoZinonebc48fQFD6L0WKBhaf" />
+  <component name="ProjectId" id="1cpnen0kIYyUUFCyd3NDQyHkkvM" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\DBProjects\Tmp\Hong Anh\project" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -37,20 +46,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.deleteDonor">
-    <configuration name="ConnectDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tmp" />
+  <component name="RunManager" selected="Python.deleteDonorDB">
+    <configuration name="addDonorDB (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DatabaseProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Hong Anh/project" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../DatabaseProject(1)/DatabaseProject/backEnd/project/DBQueriesPython" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\DBProjects\Tmp\Hong Anh\project\checkConnectionDB.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../DatabaseProject(1)/DatabaseProject/backEnd/project/DBQueriesPython/addDonorDB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -60,18 +69,18 @@
       <method v="2" />
     </configuration>
     <configuration name="addDonorDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tmp" />
+      <module name="DatabaseProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Hong Anh/project" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project/DBQueriesPython" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Hong Anh/project/addDonorDB.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/DBQueriesPython/addDonorDB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -80,19 +89,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="deleteDonor" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tmp" />
+    <configuration name="checkConnectionDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DatabaseProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Hong Anh/project" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project/DBQueriesPython" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Hong Anh/project/deleteDonor.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/DBQueriesPython/checkConnectionDB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -101,19 +110,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="updateDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tmp" />
+    <configuration name="deleteDonorDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DatabaseProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Hong Anh/project" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project/DBQueriesPython" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\DBProjects\Tmp\Hong Anh\project\addDonorDB.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/DBQueriesPython/deleteDonorDB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -124,10 +133,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.deleteDonor" />
+        <item itemvalue="Python.deleteDonorDB" />
         <item itemvalue="Python.addDonorDB" />
-        <item itemvalue="Python.updateDB" />
-        <item itemvalue="Python.ConnectDB" />
+        <item itemvalue="Python.addDonorDB (1)" />
+        <item itemvalue="Python.checkConnectionDB" />
       </list>
     </recent_temporary>
   </component>
@@ -136,12 +145,25 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="68ce194a-5c22-441c-afe3-4f88321701ee" name="Default Changelist" comment="" />
-      <created>1588237259025</created>
+      <changelist id="5c9ed666-d442-48a3-9e62-b89c5f973494" name="Default Changelist" comment="" />
+      <created>1591234500261</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1588237259025</updated>
+      <updated>1591234500261</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
