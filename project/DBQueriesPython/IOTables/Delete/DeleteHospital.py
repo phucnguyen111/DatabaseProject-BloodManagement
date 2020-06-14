@@ -1,6 +1,6 @@
 import psycopg2
 
-def deleteBlood(bID):
+def deleteHópital(hID):
     try:
         connection = psycopg2.connect(user="postgres",
                                       password="01689240658",
@@ -10,19 +10,19 @@ def deleteBlood(bID):
         cursor = connection.cursor()
 
 
-        print("Deleting Blood with the ID: ", bID)
+        print("Deleting donor with the ID: ", hID)
 
-        sql_delete_query = """delete from Blood where BloodID = %s"""
-        cursor.execute(sql_delete_query, (bID,))
+        sql_delete_query = """delete from Donor where PersonalID = %s"""
+        cursor.execute(sql_delete_query, (hID,))
         connection.commit()
         count = cursor.rowcount
-        print(count, "records successfully deleted from Blood table...")
-
+        print(count, "records successfully deleted from Donor table...")
+        return 1
     except (Exception, psycopg2.Error) as error:
-        print("Error deleting record from Blood:", error)
+        print("Error deleting record from Donor:", error)
+        return 0
     finally:
         if(connection):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-

@@ -16,7 +16,7 @@ def requestBloodDB(requestedType, requestedAmount):
         if not data:
             print("That kind of blood does not exist");
 
-            status = 0
+            return 0
         else:
             sql_select_query = """select * from BloodGroup where BloodType = %s and TotalAmount >= %s"""
             cursor.execute(sql_select_query, (requestedType, requestedAmount))
@@ -27,12 +27,12 @@ def requestBloodDB(requestedType, requestedAmount):
             current_amount = cursor.fetchone()[0]
             # print(current_amount)
             if not data:
-                print("Not enough ", requestedAmount, "(ml) blood of blood type ", requestedType, "! Still taking all...");
+                print("Not enough ", requestedAmount, "(ml) blood of blood type ", requestedType, "! Still taking all that's left...");
                 sql_update_query = """update BloodGroup set TotalAmount = 0 where BloodType = %s"""
                 cursor.execute(sql_update_query, (requestedType,))
                 connection.commit()
 
-                status = 0
+                return 1
             else:
                 print("There's enough ", requestedAmount, "(ml) blood of blood type ", requestedType, "!");
                 updated_amount = current_amount - requestedAmount
@@ -41,15 +41,22 @@ def requestBloodDB(requestedType, requestedAmount):
                 connection.commit()
                 print("There's", updated_amount, "(ml) of blood group", requestedType, "remain.")
 
-                status = 1
+                return 2
 
-        return status
     except (Exception, psycopg2.Error) as error:
         print("Error while processing bloodRequest from Hospital:", error)
+        return -1
     finally:
         if (connection):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
 
-#requestBloodDB("O+",4)
+print(requestBloodDB("O+",4))
+
+#---------------------------------------------------------------
+#Return values:
+#0: That BloodType does not exist (Eg: request blood C- -> Not exist)
+#1: Not enough blood -> Take all what's left -> Amount of that BloodTye becomes 0
+#2: Enough blood -> request successful
+#-1: Database error -> not added

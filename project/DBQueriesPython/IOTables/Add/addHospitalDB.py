@@ -22,10 +22,11 @@ def addHospital(hName, hAddress, hEmail, hCont): #hHospitalID de la SERIAL
 
         count = cursor.rowcount
         print(count, "records successfully inserted into Hospital table...")
-
+        return 1
     except (Exception, psycopg2.Error) as error:
         if(connection):
             print("Error inserting record into Hospital table:", error)
+            return 0
     finally:
         if(connection):
             cursor.close()
@@ -33,8 +34,13 @@ def addHospital(hName, hAddress, hEmail, hCont): #hHospitalID de la SERIAL
             print("PostgreSQL connection is closed")
 
 
-# hName = "L'Hopital Vietnam et France"
+# hName = "L'Hôpital Vietnam et France"
 # hAddress = "Phuong Mai, Ha Noi"
 # hEmail = "contact@hfh.com.vn"
 # hCont = "18EU239DWKKE3"
 # addHospital(hName, hAddress, hEmail, hCont)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Added into table
+#0: Database error -> not added

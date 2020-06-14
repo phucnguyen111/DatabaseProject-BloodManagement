@@ -1,6 +1,6 @@
 import psycopg2
 
-def addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhRequestAmount):
+def addBloodRequestHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhRequestAmount):
     try:
         connection = psycopg2.connect(user="postgres",
                                       password="01689240658",
@@ -17,10 +17,11 @@ def addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhReque
 
         count = cursor.rowcount
         print(count, "records successfully inserted into Donor table...")
-
+        return 1
     except(Exception, psycopg2.Error) as error:
         if(connection):
             print("Error inserting record into RequestBloodHistory table: ", error)
+            return 0
     finally:
         if(connection):
             cursor.close()
@@ -31,4 +32,9 @@ def addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhReque
 # rbhBloodType = "A-"
 # rbhRequestDate = "2020-04-02"
 # rbhRequestAmount = 132
-# addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhRequestAmount)
+# addBloodRequestHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhRequestAmount)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Added into table
+#0: Database error -> not added

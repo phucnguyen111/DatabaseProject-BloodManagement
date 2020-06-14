@@ -22,10 +22,12 @@ def addDonor(donPerID, donName, donGender, donAddress, donEmail, donCont):
 
         count = cursor.rowcount
         print(count, "records successfully inserted into Donor table...")
+        return 1
 
     except (Exception, psycopg2.Error) as error:
         if(connection):
             print("Error inserting record into Donor:", error)
+            return 0
     finally:
         if(connection):
             cursor.close()
@@ -39,6 +41,9 @@ def addDonor(donPerID, donName, donGender, donAddress, donEmail, donCont):
 # donAddress = "NewYork"
 # donEmail = "Hexxa88@gmail.com"
 # donCont = "IJNNIJIWWDE2U04"
-#
-#
 # addDonor(donPerID, donName, donGender, donAddress, donEmail, donCont)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Added into table
+#0: Database error -> not added

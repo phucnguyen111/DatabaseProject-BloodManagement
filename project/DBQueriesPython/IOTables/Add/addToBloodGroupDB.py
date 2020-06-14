@@ -32,3 +32,8 @@ def addToBloodGroup (bgBloodType, bgAddedAmount):
 # bgBloodType = "O-"
 # bgTotalAmount = 2
 # addToBloodGroup(bgBloodType, bgTotalAmount)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Added into table
+#0: Database error -> not added
