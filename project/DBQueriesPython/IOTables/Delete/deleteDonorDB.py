@@ -27,3 +27,8 @@ def deleteDonor(donPerID):
             print("PostgreSQL connection is closed")
 
 # deleteDonor(123456)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Deleted from table
+#0: Database error -> not deleted

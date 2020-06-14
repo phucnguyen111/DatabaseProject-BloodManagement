@@ -52,7 +52,7 @@ def requestBloodDB(requestedType, requestedAmount):
             connection.close()
             print("PostgreSQL connection is closed")
 
-print(requestBloodDB("O+",4))
+# print(requestBloodDB("O+",4))
 
 #---------------------------------------------------------------
 #Return values:

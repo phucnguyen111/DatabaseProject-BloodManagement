@@ -26,3 +26,8 @@ def deleteHópital(hID):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
+
+#---------------------------------------------------------------
+#Return values:
+#1: Deleted from table
+#0: Database error -> not deleted

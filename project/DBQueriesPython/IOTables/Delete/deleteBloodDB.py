@@ -17,9 +17,11 @@ def deleteBlood(bID):
         connection.commit()
         count = cursor.rowcount
         print(count, "records successfully deleted from Blood table...")
+        return 1
 
     except (Exception, psycopg2.Error) as error:
         print("Error deleting record from Blood:", error)
+        return 0
     finally:
         if(connection):
             cursor.close()
@@ -28,3 +30,8 @@ def deleteBlood(bID):
 
 # bID = 1
 # deleteBlood(bID)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Deleted from table
+#0: Database error -> not deleted

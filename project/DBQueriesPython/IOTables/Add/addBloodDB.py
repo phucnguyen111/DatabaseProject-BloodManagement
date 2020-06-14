@@ -34,10 +34,10 @@ def addBlood(bPerID, bBloodType, bAmount): #bDonationDate de la NOW(), bID de la
             connection.close()
             print("PostgreSQL connection is closed")
 
-bPerID = 123456
-bBloodType = "A+"
-bAmount = 0.5
-addBlood(bPerID, bBloodType, bAmount)
+# bPerID = 123456
+# bBloodType = "A+"
+# bAmount = 0.5
+# addBlood(bPerID, bBloodType, bAmount)
 
 #---------------------------------------------------------------
 #Return values:
