@@ -29,7 +29,6 @@ def addToBloodGroup (bgBloodType, bgAddedAmount):
         print("PostgreSQL connection is closed")
 
 
-bgBloodType = "O-"
-bgTotalAmount = 2
-
-addToBloodGroup(bgBloodType, bgTotalAmount)
+# bgBloodType = "O-"
+# bgTotalAmount = 2
+# addToBloodGroup(bgBloodType, bgTotalAmount)

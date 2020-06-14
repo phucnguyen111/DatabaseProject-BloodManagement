@@ -33,8 +33,8 @@ def addHospital(hName, hAddress, hEmail, hCont): #hHospitalID de la SERIAL
             print("PostgreSQL connection is closed")
 
 
-hName = "L'Hopital Vietnam et France"
-hAddress = "Phuong Mai, Ha Noi"
-hEmail = "contact@hfh.com.vn"
-hCont = "18EU239DWKKE3"
-addHospital(hName, hAddress, hEmail, hCont)
+# hName = "L'Hopital Vietnam et France"
+# hAddress = "Phuong Mai, Ha Noi"
+# hEmail = "contact@hfh.com.vn"
+# hCont = "18EU239DWKKE3"
+# addHospital(hName, hAddress, hEmail, hCont)

@@ -27,9 +27,8 @@ def addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhReque
             connection.close()
             print("PostgreSQL connection is closed")
 
-rbhHospitalID = 1
-rbhBloodType = "A-"
-rbhRequestDate = "2020-04-02"
-rbhRequestAmount = 132
-
-addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhRequestAmount)
+# rbhHospitalID = 1
+# rbhBloodType = "A-"
+# rbhRequestDate = "2020-04-02"
+# rbhRequestAmount = 132
+# addRequestBloodHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhRequestAmount)
