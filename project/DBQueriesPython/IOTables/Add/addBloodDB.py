@@ -1,6 +1,13 @@
 import psycopg2
 from project.DBQueriesPython.AppFunctions.calculateMonthDiff import calculateMonthDiff
 
+
+#---------------------------------------------------------------
+#Return values:
+#2: Donated less than 3 months -> not added into table
+#1: Added into table
+#0: Database error -> not added
+
 def addBlood(bPerID, bBloodType, bAmount): #bDonationDate de la NOW(), bID de la SERIAL
     try:
         connection = psycopg2.connect(user="postgres",
