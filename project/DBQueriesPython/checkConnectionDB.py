@@ -1,11 +1,11 @@
 import psycopg2
 
 try:
-    connection = psycopg2.connect(user = "postgres",
-                                  password = "ha3171999",
-                                  host = "localhost",
-                                  port = "5432",
-                                  database = "BloodBank")
+    connection = psycopg2.connect(user="postgres",
+                                      password="ha3171999",
+                                      host="localhost",
+                                      port="5432",
+                                      database="BloodBank")
 
     cursor = connection.cursor()
     print(connection.get_dsn_parameters(), "\n")

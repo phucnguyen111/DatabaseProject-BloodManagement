@@ -1,3 +1,6 @@
+'''
+NOTE:   Currently not used at all ?
+'''
 import psycopg2
 
 from DBQueriesPython.addDonorDB import addDonor

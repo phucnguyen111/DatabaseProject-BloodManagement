@@ -1,10 +1,21 @@
 import psycopg2
-'''
-This function is used to populate the addblood table when donor register blood donation.
-Will be used in add new blood entry
-'''
+from calculateMonthDiff import calculateMonthDiff
 
-def addBlood(bID, bAmount, bStatus):
+
+'''
+This function is used to add a blood entry to the Blood database.
+It first checks whether the donor's last donation was more than 3 months ago. If not then addition of blood is not allowed.
+
+@param[in]  bPerID          Blood personal ID, ID of the blood donor   
+@param[in]  bBloodType      Type of blood
+@param[in]  bAmount         Amount of blood
+
+@return     status          The status of adding blood to the database
+            0               Database error, can not add
+            1               Add successfully to the table
+            2               Donor last donated was less than 3 months ago, cannot add this blood to table
+'''
+def addBlood(bPerID, bBloodType, bAmount): #bDonationDate de la NOW(), bID de la SERIAL
     try:
         connection = psycopg2.connect(user="postgres",
                                       password="ha3171999",
@@ -13,25 +24,26 @@ def addBlood(bID, bAmount, bStatus):
                                       database="BloodBank")
         cursor = connection.cursor()
 
-        print("Adding blood: ",bID,"~",bAmount,"~"+bStatus)
+        if(calculateMonthDiff(bPerID) < 3):
+            print("This donor has donated less than 3 months ago. Not allowed!")
+            return 2
+        else:
+            print("Adding blood: ", bPerID, "~", bBloodType, "~" + str(bAmount))
+            sql_insert_query = """insert into Blood(PersonalID, BloodType, Amount, DonationDate) values(%s,%s,%s,NOW())"""
+            record_to_insert = (bPerID, bBloodType, bAmount)
+            cursor.execute(sql_insert_query, record_to_insert)
+            connection.commit()
 
-        sql_insert_query = """insert into Blood values(%s,%s,%s,NOW())"""
-        record_to_insert = (bID, bAmount, bStatus)
-        cursor.execute(sql_insert_query, record_to_insert)
-        connection.commit()
-        count = cursor.rowcount
-        print(count, "records successfully inserted into Blood table...")
+            count = cursor.rowcount
+            print(count, "records successfully inserted into Blood table...")
+            return 1
 
     except (Exception, psycopg2.Error) as error:
         if(connection):
-            print("Error inserting record to Blood:", error)
+            print("Error inserting record into Blood:", error)
+            return 0
     finally:
         if(connection):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-
-# bID = "123456_160520"
-# bAmount = 100
-# bStatus = "Good"
-# addBlood(bID,bAmount,bStatus)

@@ -1,12 +1,15 @@
 import psycopg2
 
+'''
+NOTE:   Currently not used
+'''
 def isDonorExists(donPerID):
     try:
-        connection = psycopg2.connect(user = "postgres",
-                                      password = "ha3171999",
-                                      host = "localhost",
-                                      port = "5432",
-                                      database = "BloodBank")
+        connection = psycopg2.connect(user="postgres",
+                                      password="ha3171999",
+                                      host="localhost",
+                                      port="5432",
+                                      database="BloodBank")
 
         cursor = connection.cursor()
 
@@ -31,5 +34,3 @@ def isDonorExists(donPerID):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-
-isDonorExists(1199232319)

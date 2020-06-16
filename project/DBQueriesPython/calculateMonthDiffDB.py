@@ -1,5 +1,14 @@
 import psycopg2
 
+
+'''
+This function checks for the donor's last donation to see whether he/she is qualified for the next donation
+@param[in]:     donPerID            Donor's personal ID
+
+@return:        status              The time interval between the last donation and this current one
+                time                valid time
+                -1                  Invalid time
+'''
 def calculateMonthDiff (donPerID):
     try:
         connection = psycopg2.connect(user="postgres",
@@ -9,10 +18,8 @@ def calculateMonthDiff (donPerID):
                                       database="BloodBank")
         cursor = connection.cursor()
         sql_get_latest_date_query = """select max(DonationDate) 
-                                    from Donor, Donate, Blood 
-                                    where Donor.DonorID = Donate.DonorID
-                                    and Donate.BloodID = Blood.BloodID
-                                    and Donor.PersonalID = %s"""
+                                    from Blood 
+                                    where Blood.PersonalID = %s"""
         cursor.execute(sql_get_latest_date_query, (donPerID,))
         latest_date = cursor.fetchone()[0]
         print("Latest date that this donor donated: ",latest_date)
@@ -23,6 +30,7 @@ def calculateMonthDiff (donPerID):
         return month_difference
     except (Exception, psycopg2.Error) as error:
         print("Error while calculating difference in months: ", error)
+        return -1
 
     finally:
         if (connection):
@@ -30,4 +38,4 @@ def calculateMonthDiff (donPerID):
             connection.close()
             print("PostgreSQL connection is closed")
 
-# calculateMonthDiff(123456)
+calculateMonthDiff(123456)
