@@ -1,5 +1,5 @@
 import psycopg2
-
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 '''
 This function is used to populate the Hospital table when donor register blood donation.
 @param[in]:     hName        Hospital's name
@@ -15,11 +15,11 @@ This function is used to populate the Hospital table when donor register blood d
 
 def addHospital(hName, hAddress, hEmail, hContact): 
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
 
         print("Adding hospital:")

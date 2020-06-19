@@ -1,5 +1,5 @@
 import psycopg2
-
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 '''
 This function is used to populate the addDonor table when donor register blood donation.
 If addDonor is successful, we continue to addBloodDB
@@ -18,11 +18,11 @@ If addDonor is successful, we continue to addBloodDB
 
 def addDonor(donPerID, donName, donGender, donAddress, donEmail, donContact):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
 
         print("Adding donor: ", donPerID, "~", donName, "~", donGender, "~", donAddress, "~", donEmail, "~", donContact)
@@ -32,7 +32,6 @@ def addDonor(donPerID, donName, donGender, donAddress, donEmail, donContact):
         connection.commit()
 
         count = cursor.rowcount
-        print(count, "records successfully inserted into Donor table...")
         return 1
 
     except (Exception, psycopg2.Error) as error:
@@ -43,4 +42,3 @@ def addDonor(donPerID, donName, donGender, donAddress, donEmail, donContact):
         if(connection):
             cursor.close()
             connection.close()
-            print("PostgreSQL connection is closed")

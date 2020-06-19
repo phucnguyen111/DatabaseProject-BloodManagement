@@ -1,13 +1,12 @@
 import psycopg2
-
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 def requestBloodDB(requestedType, requestedAmount):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
-
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
 
         sql_select_query = """select * from BloodGroup where BloodType = %s"""

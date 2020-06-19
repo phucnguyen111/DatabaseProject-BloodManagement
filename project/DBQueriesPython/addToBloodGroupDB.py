@@ -1,5 +1,5 @@
 import psycopg2
-
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 '''
 This function updates the amount of blood in the required blood group everytime new blood donation is created and is successful.
 
@@ -8,17 +8,17 @@ This function updates the amount of blood in the required blood group everytime 
 
 
 @return         status                  Whether the request history is successful or not
-                1                       Request history is successfully added to the table
+                1                       Blood group is successfully added to the table
                 0                       Database has error, can not add this record
 '''
 
 def addToBloodGroup (bgBloodType, bgAddedAmount):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
 
         cursor.execute("""select TotalAmount from BloodGroup where BloodType = %s""", (bgBloodType,))
@@ -32,9 +32,12 @@ def addToBloodGroup (bgBloodType, bgAddedAmount):
         count = cursor.rowcount
         print(count, "records sucessfully inserted into BloodGroup table")
 
+        return 1
+
     except(Exception, psycopg2.Error) as error:
         if(connection):
             print("Error inserting record into BloodGroup table: ", error)
+            return 0
     finally:
         cursor.close()
         connection.close()

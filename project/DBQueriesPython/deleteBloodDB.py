@@ -1,5 +1,5 @@
 import psycopg2
-
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 '''
 This function deletes the blood entry in the Blood database.
 NOTE: Practical use in the project is unclear. Need further ìnormation
@@ -10,20 +10,20 @@ NOTE: Practical use in the project is unclear. Need further ìnormation
                     0               Failure
 '''
 
-def deleteBlood(bID):
+def deleteBlood(perID, donationDate):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
 
 
-        print("Deleting Blood with the ID: ", bID)
+        print("Deleting Blood of donor %s with the date %s: ",  (perID, donationDate) )
 
-        sql_delete_query = """delete from Blood where BloodID = %s"""
-        cursor.execute(sql_delete_query, (bID,))
+        sql_delete_query = """delete from Blood where PersonalID = %s and DonationDate = %s"""
+        cursor.execute(sql_delete_query, (perID,donationDate))
         connection.commit()
         count = cursor.rowcount
         print(count, "records successfully deleted from Blood table...")

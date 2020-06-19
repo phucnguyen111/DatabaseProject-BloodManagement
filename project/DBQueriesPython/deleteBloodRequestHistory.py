@@ -1,5 +1,5 @@
 import psycopg2
-
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 '''
 This function is used to delete the hospitals' request for blood's history.
 @param[in]:     rbhHospitalID           Hospital ID of the hospital that is requesting blood history
@@ -13,11 +13,11 @@ This function is used to delete the hospitals' request for blood's history.
 '''
 def deleteBloodRequestHistory(rbhHospitalID, rbhBloodType, rbhRequestDate):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
 
 

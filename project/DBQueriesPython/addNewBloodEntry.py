@@ -7,6 +7,7 @@ from DBQueriesPython.addDonorDB import addDonor
 from DBQueriesPython.addBloodDB import addBlood
 from DBQueriesPython.calculateMonthDiffDB import calculateMonthDiff
 from DBQueriesPython.addDonateDB import addDonate
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 '''
 This function is to create a new blood entry whenever a donor register a blood donation. 
 Change password, database according to your database
@@ -17,11 +18,11 @@ NOTE: need to return query status:
 
 def addNewBloodEntry(donDonID, donPerID, donName, donGender, donAddress, donEmail, donCont, bID, bAmount, bStatus):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="ha3171999",
-                                      host="localhost",
-                                      port="5432",
-                                      database="BloodBank")
+        connection = psycopg2.connect(user=user,
+                                      password=password,
+                                      host=host,
+                                      port=port,
+                                      database=database)
         cursor = connection.cursor()
         # tim xem donor da ton tai chua
         sql_find_donor_query = """select * from Donor where PersonalID = %s"""

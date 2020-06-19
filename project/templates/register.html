@@ -19,125 +19,128 @@
 </head>
 
 <body>
-    <div class="humburger-out" onclick="navOpen()">
-        <div class="humburger-in"></div>
-        <div class="humburger-in"></div>
-        <div class="humburger-in"></div>
-    </div>
-    <div class="w3-container header" style="margin-left:6%" id="header">
-        <img src="images/icon.jpg"  class="logo" />
-                <a href="index.html" class="header-nav">Home</a>
-                <a href="register.html" class="header-nav">Register</a>
-                <a href="request.html" class="header-nav">Request</a>
-    </div>
+    <div class="page-container">
+        <div class="content-wrap">
+            <div class="humburger-out" onclick="navOpen()">
+                <div class="humburger-in"></div>
+                <div class="humburger-in"></div>
+                <div class="humburger-in"></div>
+            </div>
+            <div class="w3-container header" style="margin-left:6%" id="header">
+                <img src="images/icon.jpg"  class="logo" />
+                        <a href="index.html" class="header-nav">Home</a>
+                        <a href="register.html" class="header-nav">Register as Donor</a>
+                        <a href="request.html" class="header-nav">Request Blood</a>
+            </div>
 
-    <div class="w3-container">
-        <div class="input-box w3-card-2">
-            <header class="w3-center">
-                <h4>Registration Form</h4>
-            </header>
-            <hr>
+            <div class="w3-container">
+                <div class="input-box w3-card-2">
+                    <header class="w3-center">
+                        <h4>Registration Form</h4>
+                    </header>
+                    <hr>
 
-            <form method="post" id="ajaxForm">
-                <div class="w3-row-padding">
-                    <div class="w3-half">
-                        <input type="hidden" name="origin" value="register">
-                        <label>First Name</label>
-                        <input type="text" class="w3-input w3-border" name="fname" id="fname">
-                    </div>
-                    <div class="w3-half">
-                        <label>Last Name</label>
-                        <input type="text" class="w3-input w3-border" name="lname" id="lname">
-                    </div>
-                </div>
-                
-                <div class="w3-row-padding">
-                    <div class="w3-half">
-                        <label for="birthday">Date of Birth</label>
-                        <input type="date" class="w3-input w3-border" id="birthday" name="birthday">
-                    </div>
-                    <div class="w3-half">
-                        <label>Personal ID</label>
-                        <input 
-                            type="number" 
-                            onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" 
-                            class="w3-input w3-border" 
-                            name="phone" 
-                            id="phone"
-                            class="w3-input w3-border" 
-                            id="pid" 
-                            name="pid"
-                        >
-                    </div>
-                </div>
-                <div class="w3-row-padding">
-                    <div class="w3-half">
-                        <label>Gender</label>
-                        <select name="gender" id="gender" class="w3-input w3-border">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                    </div>
-                    <div class="w3-half">
-                        <label>Address</label>
-                        <input type="text" class="w3-input w3-border" name="address" id="address">
-                    </div>
-                </div>
-                
-                <div class="w3-row-padding">
-                    <div class="w3-half">
-                        <label>Phone Number</label>
-                        <input 
-                            type="number" 
-                            onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" 
-                            class="w3-input w3-border" 
-                            name="phone" 
-                            id="phone"
-                            class="w3-input w3-border" 
-                            id="pid" 
-                            name="pid"
-                        >
-                    </div>
-                    <div class="w3-half">
-                        <label>Email</label>
-                        <input type="email" class="w3-input w3-border" name="email" id="email">
-                    </div>
-                </div>
-
-                <div class="w3-row-padding">
-                    <div class="w3-half">
-                        <label>Blood Group</label>
-                        <select name="blood_group" id="blood_group" class="w3-input w3-border">
-                            <option>O+</option>
-                            <option>O-</option>
-                            <option>A+</option>
-                            <option>B+</option>
-                            <option>A-</option>
-                            <option>B-</option>
-                            <option>AB+</option>
-                            <option>AB-</option>
-                        </select>
-                    </div>
-                    <div class="w3-half">
-                        <label>Donate at Hospital</label>
-                        <input type="text" class="w3-input w3-border" name="hospital" id="hospital">
-                    </div>
-                </div>
                     
-                    <br>
-                
-                
-                <div class="w3-center">
-                    <input type="submit" class="w3-button w3-round-large w3-padding-large blue-button" value="Submit" style="margin-right: 1%" >
-                    <input type="reset" class="w3-button w3-round-large w3-padding-large red-button" value="Reset" style="margin-left: 1%" >                    
+
+                    <form method="POST" action="{{url_for('register')}}" id="jsonForm">
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <input type="hidden" name="origin" value="register">
+                                <label>Full Name</label>
+                                <input type="text" class="w3-input w3-border" name="fname" id="fname" required>
+                            </div>
+                            <div class="w3-half">
+                                <label>Gender</label>
+                                <select name="gender" id="gender" class="w3-input w3-border" required>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="w3-row-padding">
+                            <div class="w3-half">
+                                <label>Address</label>
+                                <input type="text" class="w3-input w3-border" name="address" id="address" required>
+                            </div>
+                            
+                            <div class="w3-half">
+                                <label>Personal ID</label>
+                                <input 
+                                    type="number" class="w3-input w3-border" id="pid" name="pid" required>
+                            </div>
+                        </div>
+                        <div class="w3-row-padding">
+                             <div class="w3-half">
+                                <label>Email</label>
+                                <input type="email" class="w3-input w3-border" name="email" id="email">
+                            </div>
+                            
+                            <div class="w3-half">
+                                <label>Contact Number</label>
+                                <input type="number" pattern="[0-9]{10}"  class="w3-input w3-border" name="phone" id="phone" required>
+                            </div>
+                        </div>
+                        
+                        
+
+                        
+
+                       
+
+                        <div class="w3-row-padding">
+                            
+                            <div class="w3-half">
+                                <label>Blood Group</label>
+                                <select name="blood_group" id="blood_group" class="w3-input w3-border" required>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                    <option>A+</option>
+                                    <option>B+</option>
+                                    <option>A-</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                </select>
+                            </div> 
+
+                            <div class="w3-half">
+                                <label>Amount</label>
+                                <select name="donate_amount" id="donate_amount" class="w3-input w3-border" required>
+                                    <option>250 ml</option>
+                                    <option>350 ml</option>
+                                    <option>450 ml</option>
+                                </select>
+                                 
+                                
+                            </div> 
+
+        
+                        </div>
+                        <!--
+
+                        <div class="w3-row">
+                            <label>Status</label>
+                            <input type="text" class="w3-input w3-border" name="status" id="status" required>
+                        </div>-->
+
+                        <br>
+                        <br>
+                        
+                        <div class="w3-center">
+                            <input type="submit" class="w3-button w3-round-large w3-padding-large blue-button" value="Submit" style="margin-right: 1%" >
+                            <input type="reset" class="w3-button w3-round-large w3-padding-large red-button" value="Reset" style="margin-left: 1%" >                    
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>    
         </div>
     </div>
     <footer class="footer">
         
         <a>
-            Made by Hong Einh, Viet Hoang, Hung Nguyen, and Phuc Nguyen - Database Project © Copyright 2020 All Right Reserved
+            Made by Hong Einh, Viet Hoang, Hung Nguyen, and Phuc Nguyen <br> Database Project © Copyright 2020 All Right Reserved
         </a>
     </footer>
     <script src="js/jquery-3.4.1.min.js"></script>
