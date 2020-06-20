@@ -51,10 +51,9 @@ document.addEventListener("DOMContentLoaded", function(){
 			}
 		};
 		xhr.send(json);
-
-		//if success --> show register-success
+		//if success hien trang register success
 		success();
-		// if fail --> show fail-register
+		// if fail hien trang  fail register
 		fail();
 		//fail();
 	}, false);
@@ -68,3 +67,4 @@ function success(){
 function fail(){
 	window.location.href="fail-register.html"
 }
+

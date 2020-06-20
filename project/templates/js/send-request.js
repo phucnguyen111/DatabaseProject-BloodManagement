@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function(){
 		};
 		xhr.send(json);
 	}, false);
-
 });
 
 function success(){
