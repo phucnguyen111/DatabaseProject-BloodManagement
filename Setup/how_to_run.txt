@@ -1,0 +1,7 @@
+Chạy chương trình:
+
+cd DatabaseProject
+python project/main.py
+
+Tiếp theo thì follow cái link
+

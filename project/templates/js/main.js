@@ -53,3 +53,7 @@ function navOpen() {
   else
     $("#header").addClass('visibler');
 }
+
+function openIndex() {
+  window.location.href="index.html"
+}
