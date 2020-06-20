@@ -59,7 +59,12 @@ document.addEventListener("DOMContentLoaded", function(){
 	}, false);
 
 });
-
+function navOpen() {
+  if ($("#header").hasClass('visibler'))
+    $("#header").removeClass('visibler');
+  else
+    $("#header").addClass('visibler');
+}
 function success(){
 	window.location.href="success-register.html"
 }
