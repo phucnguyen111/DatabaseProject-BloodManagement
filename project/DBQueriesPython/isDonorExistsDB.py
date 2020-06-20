@@ -8,7 +8,6 @@ def isDonorExists(donPerID):
                                       host = host,
                                       port = port,
                                       database = database)
-
         cursor = connection.cursor()
 
         sql_select_query = """select * from Donor where PersonalID = %s"""
@@ -32,5 +31,3 @@ def isDonorExists(donPerID):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-
-isDonorExists(1199232319)

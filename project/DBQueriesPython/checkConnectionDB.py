@@ -7,7 +7,6 @@ try:
                                   host = host,
                                   port = port,
                                   database = database)
-
     cursor = connection.cursor()
     print(connection.get_dsn_parameters(), "\n")
 

@@ -1,5 +1,13 @@
 import psycopg2
 from DBQueriesPython.databaseInfo import user, password, host, port, database
+'''
+This function is used to delete a donor. 
+@param[in]:     donPerID                Donor's personal ID
+
+@return         status                  Whether deletion is successful or not
+                1                       Request history is successfully added to the table
+                0                       Database has error, can not add this record
+'''
 
 def deleteDonor(donPerID):
     try:
@@ -27,4 +35,9 @@ def deleteDonor(donPerID):
             connection.close()
             print("PostgreSQL connection is closed")
 
-deleteDonor(1199232319)
+# deleteDonor(123456)
+
+#---------------------------------------------------------------
+#Return values:
+#1: Deleted from table
+#0: Database error -> not deleted
