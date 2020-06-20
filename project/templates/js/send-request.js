@@ -52,4 +52,13 @@ document.addEventListener("DOMContentLoaded", function(){
 		};
 		xhr.send(json);
 	}, false);
+
 });
+
+function success(){
+	window.location.href="success-request.html"
+}
+
+function fail(){
+	window.location.href="fail-request.html"
+}

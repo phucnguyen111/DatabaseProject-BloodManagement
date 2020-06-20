@@ -1,12 +1,13 @@
 import psycopg2
+from DBQueriesPython.databaseInfo import user, password, host, port, database
 
 def isDonorExists(donPerID):
     try:
-        connection = psycopg2.connect(user = "postgres",
-                                      password = "NVHplay.99.02.21",
-                                      host = "localhost",
-                                      port = "9221",
-                                      database = "BloodDonateProject")
+        connection = psycopg2.connect(user = user,
+                                      password = password,
+                                      host = host,
+                                      port = port,
+                                      database = database)
 
         cursor = connection.cursor()
 
