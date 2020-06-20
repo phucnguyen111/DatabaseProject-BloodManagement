@@ -1,0 +1,5 @@
+user = "postgres"
+password = "NVHplay.99.02.21"
+host = "localhost"
+port = "9221"
+database = "BloodBank"
