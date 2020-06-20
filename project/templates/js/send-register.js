@@ -51,11 +51,10 @@ document.addEventListener("DOMContentLoaded", function(){
 			}
 		};
 		xhr.send(json);
-		//if success hien trang register success
-		success();
-		// if fail hien trang  fail register
-		fail();
-		//fail();
+		// if success --> show success register
+		// success();
+		// if fail --> show fail register
+		// fail();
 	}, false);
 
 });
