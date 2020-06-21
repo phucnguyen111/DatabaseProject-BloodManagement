@@ -1,4 +1,4 @@
-from views import index, register, request
+from views import index, register, request, statistic
 from router import Router
 
 def setup_routes(app):
@@ -8,6 +8,8 @@ def setup_routes(app):
     app.router.add_get("/register.html", register)
     app.router.add_get("/request", request)
     app.router.add_get("/request.html", request)
+    app.router.add_get("/statistics.html", statistic)
+
 
     router_instance = Router()
     #app.router.add_post('/login', router_instance.login)

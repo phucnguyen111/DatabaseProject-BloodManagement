@@ -14,3 +14,7 @@ async def register(request):
 @aiohttp_jinja2.template('request.html')
 async def request(request):
     return {'name': 'Andrew', 'surname': 'Svetlov'}
+
+@aiohttp_jinja2.template('statistics.html')
+async def statistic(request):
+    return {'name': 'statistic'}
