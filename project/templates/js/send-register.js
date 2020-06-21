@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		};
 		xhr.send(json);
 		// if success --> show success register
-		// success();
+		success();
 		// if fail --> show fail register
 		// fail();
 	}, false);
