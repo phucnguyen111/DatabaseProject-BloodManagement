@@ -1,5 +1,18 @@
 import psycopg2
 from DBQueriesPython.databaseInfo import user, password, host, port, database
+
+'''
+This function will update the BloodGroup table when a new request comes. It checks from the database to see if the stock can satisfy the request
+@param[in]  requestedType       Blood group requested
+@param[in]  requestedAmount     Blood amount requested
+
+@return     status              
+            0                   Blood type not exist
+            1                   Not enough blood
+            2                   Enough blood, success
+            -1                  Database error
+
+'''
 def requestBloodDB(requestedType, requestedAmount):
     try:
         connection = psycopg2.connect(user=user,
@@ -53,9 +66,3 @@ def requestBloodDB(requestedType, requestedAmount):
 
 # print(requestBloodDB("O+",4))
 
-#---------------------------------------------------------------
-#Return values:
-#0: That BloodType does not exist (Eg: request blood C- -> Not exist)
-#1: Not enough blood -> Take all what's left -> Amount of that BloodTye becomes 0
-#2: Enough blood -> request successful
-#-1: Database error -> not added

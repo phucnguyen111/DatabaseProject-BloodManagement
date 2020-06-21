@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/w3.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/send-request.js"></script>
     <style>
         input {
             margin-bottom: 20px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -25,21 +28,22 @@
                 <div class="humburger-in"></div>
                 <div class="humburger-in"></div>
             </div>
-            <div class="w3-container header" style="margin-left:6%" id="header">
+            <div class="w3-container header" style="margin-left:6%; margin-right: 6%" id="header">
                 <img src="images/icon.jpg"  class="logo" />
                 <a href="index.html" class="header-nav">Home</a>
                 <a href="register.html" class="header-nav">Register as Donor</a>
                 <a href="request.html" class="header-nav">Request Blood</a>
+                <a href="statistics.html" class="header-nav">Statistics</a>
             </div>
             <div class="w3-container">
                 <div class="input-box w3-card-2">
                     <header class="w3-center">
-                        <h4>Blood Request Form</h4>
+                        <img src="images/004-hospital.png" class="logo" />
+                        <h2>Blood Request Form</h2>
                     </header>
                     <hr>
-
-                    <form method="POST"  id="jsonForm">
-                    
+                   
+                    <form method="POST" id="jsonForm">
                         <div class="w3-row-padding">
                             <div class="w3-half">
                                 <input type="hidden" name="origin" value="register">
@@ -99,15 +103,7 @@
             Made by Hong Einh, Viet Hoang, Hung Nguyen, and Phuc Nguyen <br> Database Project © Copyright 2020 All Right Reserved
         </a>
     </footer>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script>
-        function navOpen() {
-            if ($("#header").hasClass('visibler'))
-                $("#header").removeClass('visibler');
-            else
-                $("#header").addClass('visibler');
-        }
-    </script>
+    
 </body>
 
 </html>
