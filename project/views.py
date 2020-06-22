@@ -18,3 +18,19 @@ async def request(request):
 @aiohttp_jinja2.template('statistics.html')
 async def statistic(request):
     return {'name': 'statistic'}
+
+@aiohttp_jinja2.template('success-request.html')
+async def success_request(request):
+    return {'name': 'success-request'}
+
+@aiohttp_jinja2.template('fail-request.html')
+async def fail_request(request):
+    return {'name': 'fail-request'}
+
+@aiohttp_jinja2.template('success-register.html')
+async def success_register(request):
+    return {'name': 'success-register'}
+
+@aiohttp_jinja2.template('fail-register.html')
+async def fail_register(request):
+    return {'name': 'fail-register'}
