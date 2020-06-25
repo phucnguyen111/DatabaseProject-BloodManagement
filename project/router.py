@@ -104,23 +104,21 @@ class Router:
         if(success == 2):
             #success = addBloodRequestHistory()
             # --> can add blood request history here
-            context = {"status":"200", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-            resp = aiohttp_jinja2.render_template("success-request.html", request, context)
-            print("success")
-            return resp
+            context = {"request_status":"1", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+            return web.json_response(context)
         elif(success == 0):
-            context = {"status":"202"}
-            resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
+            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
             print("fail cuz ")
-            return resp
+            return web.json_response(context)
         elif(success == 1):
-            context = {"status":"201", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-            resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
-            return resp
+            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
+            return web.json_response(context)
         elif(success == -1):    
-            context = {"status":"500"}  
-            resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
-            return resp
+            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
+            return web.json_response(context)
         
 
     '''
@@ -175,25 +173,23 @@ class Router:
             success = addToBloodGroup(bloodgroup, amount)
             if(success == 1):
                 #resp = "Email {} Name {} blood {} amount {} successfull".format(email, fname, bloodgroup, amount)
-                context = {"status":"200", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-                resp = aiohttp_jinja2.render_template("success-register.html", request, context)
-                return resp
+                context = {"register_status":"1", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
+                return web.json_response(context)
             elif(success == 0):
                 deleteBlood(pid, day)
-                #resp = "Can not update BloodGroup DB with ID = {}".format(pid)
-                context = {"status":"500"}
-                resp = aiohttp_jinja2.render_template("fail-register.html", request, context) 
-                return resp
+                context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
+                return web.json_response(context)
         elif(success == -2):
-            context = {"status":"500"}
-            resp = aiohttp_jinja2.render_template("fail-register.html", request, context)
-            return resp
+            context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
+            return web.json_response(context)
         elif(success == 0):
-            context = {"status":"500"}
-            resp = aiohttp_jinja2.render_template("fail-register.html", request, context)
-            return resp
+            context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
+            return web.json_response(context)
         elif(success == -1):
-            #resp = "Donor's last donation was less than 3 months ago. Cannot add"
-            context = {"status":"201", "name":fname, "pid": pid, "registration_date":day}
-            resp = aiohttp_jinja2.render_template("fail-register.html", request, context)
-            return resp
+            context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
+                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
+            return web.json_response(context)
