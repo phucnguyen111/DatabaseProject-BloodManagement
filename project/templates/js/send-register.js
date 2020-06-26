@@ -51,20 +51,21 @@ document.addEventListener("DOMContentLoaded", function(){
 			}
 		};
 		xhr.send(json);
-		//if success hien trang register success
+		// if success --> show success register
 		success();
-		// if fail hien trang  fail register
-		fail();
-		//fail();
+		// if fail --> show fail register
+		// fail();
 	}, false);
 
 });
+
 function navOpen() {
   if ($("#header").hasClass('visibler'))
     $("#header").removeClass('visibler');
   else
     $("#header").addClass('visibler');
 }
+
 function success(){
 	window.location.href="success-register.html"
 }
