@@ -17,6 +17,10 @@ def setup_routes(app):
     app.router.add_get("/success-request.html", success_request)
     app.router.add_get("/fail-request.html", fail_request)
     
+    app.router.add_post("/success-register.html", success_register)
+    app.router.add_post("/fail-register.html", fail_register)
+    app.router.add_post("/success-request.html", success_request)
+    app.router.add_post("/fail-request.html", fail_request)
     #app.router.add_post('/login', router_instance.login)
     #app.router.add_post('/create_user', router_instance.create_user)
     app.router.add_post('/request_blood', router_instance.request_blood)

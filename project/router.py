@@ -106,13 +106,19 @@ class Router:
             #success = addBloodRequestHistory()
             # --> can add blood request history here
             context = {"request_status":"1", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
-            resp = aiohttp_jinja2.render_template("success-request.html", request, context=context)
-            return resp
+            #resp = aiohttp_jinja2.render_template("success-request.html", request, context=context)
+            #resp = web.Response("success-request.html")
+            print('****** Request success')
+            resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+            #raise web.HTTPFound('/success-request.html')
         else:
             context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
-            resp = aiohttp_jinja2.render_template("fail-request.html", request, context=context)
-            return resp
-        
+            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context=context)
+            #resp = web.Response("fail-request.html")
+            print('****** Request fail')
+            #raise web.HTTPFound('/fail-request.html')
+            resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+        return resp
 
     '''
     This function is used to create new register_blood_donation whenever
@@ -162,19 +168,32 @@ class Router:
 
         (addblood, latest_date) = addBlood(pid, bloodgroup, amount)
 
-        if(addblood == 1):
+        if(addblood != 1):
+            context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            print('******  success')
+            #raise web.HTTPFound('/fail-register.html')
+            #resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
+            resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+            print(' ==> render success')
+        elif(addblood == 1):
             addtobloodgroup = addToBloodGroup(bloodgroup, amount)
             if(addtobloodgroup == 1):
                 #resp = "Email {} Name {} blood {} amount {} successfull".format(email, fname, bloodgroup, amount)
                 context = {"register_status":"1", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
-                resp = aiohttp_jinja2.render_template("success-register.html", request, context=context)
-                return resp
+                print('******  success')
+                #raise web.HTTPFound('/success-register.html')
+                
+                #resp = aiohttp_jinja2.render_template("success-register.html", request, context=context)
+                #resp = web.Response("success-register.html")
+                resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+                print(' ==> render success')
             else:
                 deleteBlood(pid, day)
                 context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
-                resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
-                return resp
-        else:
-            context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
-            resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
-            return resp
+                print('******  fail')
+                #resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
+                #raise web.HTTPFound('/fail-register.html')
+                print(' ==> render success')
+                resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+                #resp = web.Response("fail-register.html")
+        return resp    

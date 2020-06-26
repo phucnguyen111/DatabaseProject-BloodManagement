@@ -10,7 +10,6 @@ async def index(request):
 async def register(request):
     return {'name': 'register'}
 
-
 @aiohttp_jinja2.template('request.html')
 async def request(request):
     return {'name': 'request'}
@@ -19,18 +18,23 @@ async def request(request):
 async def statistic(request):
     return {'name': 'statistic'}
 
+###############################################################
+
 @aiohttp_jinja2.template('success-request.html')
 async def success_request(request):
-    return {'status': 'success-request'}
+    return {'name': 'success-request'}
+
 
 @aiohttp_jinja2.template('fail-request.html')
 async def fail_request(request):
-    return {'status': 'fail-request'}
+    return {'name': 'fail-request'}
+
+###############################################################
 
 @aiohttp_jinja2.template('success-register.html')
 async def success_register(request):
-    return {'status': 'success-register'}
+    return {'fname': 'success-register'}
 
 @aiohttp_jinja2.template('fail-register.html')
 async def fail_register(request):
-    return {'status': 'fail-register'}
+    return {'fname': 'fail-register'}
