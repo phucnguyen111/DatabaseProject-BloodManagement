@@ -14,10 +14,11 @@ from DBQueriesPython.requestBloodDB import requestBloodDB
 from DBQueriesPython.deleteBloodDB import deleteBlood
 from DBQueriesPython.deleteBloodRequestHistory import deleteBloodRequestHistory
 
-from views import success_register, success_request, fail_register, fail_request
+#from views import success_register, success_request, fail_register, fail_request
 from datetime import date
 
 
+    
 class Router:
     '''
     NOTE: Not used yet
@@ -99,26 +100,18 @@ class Router:
         today = date.today()
         day = today.strftime("%Y-%m-%d")
 
-        success = addHospital(hname, address, email, phone)
-        success = requestBloodDB(bloodgroup, amount)
-        if(success == 2):
+        addHos = addHospital(hname, address, email, phone)
+        requestBlood = requestBloodDB(bloodgroup, amount)
+        if(requestBlood == 2):
             #success = addBloodRequestHistory()
             # --> can add blood request history here
-            context = {"request_status":"1", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-            return web.json_response(context)
-        elif(success == 0):
-            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
-            print("fail cuz ")
-            return web.json_response(context)
-        elif(success == 1):
-            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
-            return web.json_response(context)
-        elif(success == -1):    
-            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-            #resp = aiohttp_jinja2.render_template("fail-request.html", request, context)
-            return web.json_response(context)
+            context = {"request_status":"1", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            resp = aiohttp_jinja2.render_template("success-request.html", request, context=context)
+            return resp
+        else:
+            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            resp = aiohttp_jinja2.render_template("fail-request.html", request, context=context)
+            return resp
         
 
     '''
@@ -165,31 +158,23 @@ class Router:
         today = date.today()
         day = today.strftime("%Y-%m-%d")
 
-        success = addDonor(pid, fname, gender, address, email, phone)
+        adddonor = addDonor(pid, fname, gender, address, email, phone)
 
-        (success, latest_date) = addBlood(pid, bloodgroup, amount)
+        (addblood, latest_date) = addBlood(pid, bloodgroup, amount)
 
-        if(success == 1):
-            success = addToBloodGroup(bloodgroup, amount)
-            if(success == 1):
+        if(addblood == 1):
+            addtobloodgroup = addToBloodGroup(bloodgroup, amount)
+            if(addtobloodgroup == 1):
                 #resp = "Email {} Name {} blood {} amount {} successfull".format(email, fname, bloodgroup, amount)
-                context = {"register_status":"1", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
-                return web.json_response(context)
-            elif(success == 0):
+                context = {"register_status":"1", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+                resp = aiohttp_jinja2.render_template("success-register.html", request, context=context)
+                return resp
+            else:
                 deleteBlood(pid, day)
-                context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
-                return web.json_response(context)
-        elif(success == -2):
-            context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
-            return web.json_response(context)
-        elif(success == 0):
-            context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
-            return web.json_response(context)
-        elif(success == -1):
-            context = {"register_status":"0", "name":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"registration_date":day}
-                #resp = aiohttp_jinja2.render_template("success-register.html", request, context)
-            return web.json_response(context)
+                context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+                resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
+                return resp
+        else:
+            context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
+            return resp

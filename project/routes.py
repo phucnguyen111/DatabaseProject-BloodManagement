@@ -1,4 +1,4 @@
-from views import index, register, request, statistic, success_register, success_request, fail_register, fail_request
+from views import index, register, request, statistic , success_register, success_request, fail_register, fail_request
 from router import Router
 
 def setup_routes(app):
@@ -11,6 +11,7 @@ def setup_routes(app):
     app.router.add_get("/request", request)
     app.router.add_get("/request.html", request)
     app.router.add_get("/statistics.html", statistic)
+    
     app.router.add_get("/success-register.html", success_register)
     app.router.add_get("/fail-register.html", fail_register)
     app.router.add_get("/success-request.html", success_request)

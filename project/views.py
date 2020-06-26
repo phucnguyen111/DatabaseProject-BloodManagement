@@ -21,16 +21,16 @@ async def statistic(request):
 
 @aiohttp_jinja2.template('success-request.html')
 async def success_request(request):
-    return {'name': 'success-request'}
+    return {'status': 'success-request'}
 
 @aiohttp_jinja2.template('fail-request.html')
 async def fail_request(request):
-    return {'name': 'fail-request'}
+    return {'status': 'fail-request'}
 
 @aiohttp_jinja2.template('success-register.html')
 async def success_register(request):
-    return {'name': 'success-register'}
+    return {'status': 'success-register'}
 
 @aiohttp_jinja2.template('fail-register.html')
 async def fail_register(request):
-    return {'name': 'fail-register'}
+    return {'status': 'fail-register'}

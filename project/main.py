@@ -13,6 +13,7 @@ app['config'] = config
 
 aiohttp_jinja2.setup(app,loader=jinja2.FileSystemLoader(str(BASE_DIR / 'project' / 'templates')))
 
+
 setup_routes(app)
 setup_static_routes(app)
 app.on_startup.append(init_pg)
