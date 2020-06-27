@@ -46,15 +46,26 @@ document.addEventListener("DOMContentLoaded", function(){
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.onreadystatechange = function(){
 			// Call the function when the state changes
-			if (this.readyState === XMLHttpRequest.DONE && this.status === 200){
+			if (this.readyState === 4 && this.status === 200){
 				console.log("Donor's register has sent to the server!");
+				console.log(this.responseText);
+				var jsonResponse = JSON.parse(this.responseText);
+
+				/* Get value from the return JSON
+				var name = jsonResponse.name;
+				var pid = jsonResponse.pid;
+				var date = jsonResponse.date;
+				var phone = jsonResponse.phone;
+				var blood_group = jsonResponse.blood_group;
+				var amount = jsonResponse.amount*1000 + ' ml';*/
+
+				// if success --> show success register
+				if (jsonResponse.register_status == 1) success();
+				// if fail --> show fail register
+				else fail();
 			}
 		};
 		xhr.send(json);
-		// if success --> show success register
-		success();
-		// if fail --> show fail register
-		// fail();
 	}, false);
 
 });

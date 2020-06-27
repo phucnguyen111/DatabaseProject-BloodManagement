@@ -46,8 +46,13 @@ document.addEventListener("DOMContentLoaded", function(){
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.onreadystatechange = function(){
 			// Call the function when the state changes
-			if (this.readyState === XMLHttpRequest.DONE && this.status === 200){
+			if (this.readyState === 4 && this.status === 200){
 				console.log("Hospital's request has sent to the server!");
+				console.log(this.responseText);
+				var jsonResponse = JSON.parse(this.responseText);
+
+				if (jsonResponse.request_status == 1) success();
+				else fail();
 			}
 		};
 		xhr.send(json);
