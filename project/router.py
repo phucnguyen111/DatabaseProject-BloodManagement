@@ -18,7 +18,6 @@ from DBQueriesPython.deleteBloodRequestHistory import deleteBloodRequestHistory
 from datetime import date
 
 
-    
 class Router:
     '''
     NOTE: Not used yet
@@ -105,19 +104,23 @@ class Router:
         if(requestBlood == 2):
             #success = addBloodRequestHistory()
             # --> can add blood request history here
-            context = {"request_status":"1", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            context = {"request_status": "1", "name": hname, "address": address,
+                       "phone": phone, "blood_group": bloodgroup, "amount": str(amount), "day": day}
             #resp = aiohttp_jinja2.render_template("success-request.html", request, context=context)
             #resp = web.Response("success-request.html")
             print('****** Request success')
-            resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+            resp = web.json_response(
+                data=context, content_type='application/json', dumps=json.dumps)
             #raise web.HTTPFound('/success-request.html')
         else:
-            context = {"request_status":"0", "name":hname, "address": address, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            context = {"request_status": "0", "name": hname, "address": address,
+                       "phone": phone, "blood_group": bloodgroup, "amount": str(amount), "day": day}
             #resp = aiohttp_jinja2.render_template("fail-request.html", request, context=context)
             #resp = web.Response("fail-request.html")
             print('****** Request fail')
             #raise web.HTTPFound('/fail-request.html')
-            resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+            resp = web.json_response(
+                data=context, content_type='application/json', dumps=json.dumps)
         return resp
 
     '''
@@ -169,31 +172,73 @@ class Router:
         (addblood, latest_date) = addBlood(pid, bloodgroup, amount)
 
         if(addblood != 1):
-            context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+            context = {"register_status": "0", "fname": fname, "pid": pid, "phone": phone,
+                       "blood_group": bloodgroup, "amount": str(amount), "day": day}
             print('******  success')
             #raise web.HTTPFound('/fail-register.html')
             #resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
-            resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+            resp = web.json_response(
+                data=context, content_type='application/json', dumps=json.dumps)
             print(' ==> render success')
         elif(addblood == 1):
             addtobloodgroup = addToBloodGroup(bloodgroup, amount)
             if(addtobloodgroup == 1):
                 #resp = "Email {} Name {} blood {} amount {} successfull".format(email, fname, bloodgroup, amount)
-                context = {"register_status":"1", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+                context = {"register_status": "1", "fname": fname, "pid": pid, "phone": phone,
+                           "blood_group": bloodgroup, "amount": str(amount), "day": day}
                 print('******  success')
                 #raise web.HTTPFound('/success-register.html')
-                
+
                 #resp = aiohttp_jinja2.render_template("success-register.html", request, context=context)
                 #resp = web.Response("success-register.html")
-                resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+                resp = web.json_response(
+                    data=context, content_type='application/json', dumps=json.dumps)
                 print(' ==> render success')
             else:
                 deleteBlood(pid, day)
-                context = {"register_status":"0", "fname":fname, "pid": pid, "phone":phone, "blood_group": bloodgroup, "amount":str(amount),"day":day}
+                context = {"register_status": "0", "fname": fname, "pid": pid, "phone": phone,
+                           "blood_group": bloodgroup, "amount": str(amount), "day": day}
                 print('******  fail')
                 #resp = aiohttp_jinja2.render_template("fail-register.html", request, context=context)
                 #raise web.HTTPFound('/fail-register.html')
                 print(' ==> render success')
-                resp = web.json_response(data=context, content_type='application/json', dumps=json.dumps)
+                resp = web.json_response(
+                    data=context, content_type='application/json', dumps=json.dumps)
                 #resp = web.Response("fail-register.html")
-        return resp    
+        return resp
+
+    '''
+    This function returns the statistics of blood in json format
+
+    '''
+    async def show_statistic(self, request):
+        Oplus_donor = '25'
+        Oplus_amount = '6000' + 'ml'
+        Ominus_donor = '25'
+        Ominus_amount = '6000' + 'ml'
+
+        Aplus_donor = '25'
+        Aplus_amount = '6000' + 'ml'
+        Aminus_donor = '25'
+        Aminus_amount = '6000' + 'ml'
+
+        Bplus_donor = '25'
+        Bplus_amount = '6000' + 'ml'
+        Bminus_donor = '25'
+        Bminus_amount = '6000' + 'ml'
+
+        ABplus_donor = '25'
+        ABplus_amount = '6000' + 'ml'
+        ABminus_donor = '25'
+        ABminus_amount = '6000' + 'ml'
+
+        resp = {'Oplus_donor': Oplus_donor, 'Oplus_amount': Oplus_amount,
+                'Ominus_donor': Ominus_donor, 'Ominus_amount': Ominus_amount,
+                'Aplus_donor': Aplus_donor, 'Aplus_amount': Aplus_amount,
+                'Aminus_donor': Aminus_donor, 'Aminus_amount': Aminus_amount,
+                'Bplus_donor': Bplus_donor, 'Bplus_amount': Bplus_amount,
+                'Bminus_donor': Bminus_donor, 'Bminus_amount': Bminus_amount,
+                'ABplus_donor': ABplus_donor, 'ABplus_amount': ABplus_amount,
+                'ABminus_donor': ABminus_donor, 'ABminus_amount': Ominus_amount,}
+
+        return json_response(resp, content_type='application/json', dumps=json.dumps)
