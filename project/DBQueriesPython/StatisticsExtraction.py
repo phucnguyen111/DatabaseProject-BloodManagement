@@ -2,7 +2,7 @@ import psycopg2
 
 from DBQueriesPython.databaseInfo import user, password, host, port, database
 
-def StatisticExtraction (bloodType):
+def StatisticsExtraction (bloodType):
     try:
         connection = psycopg2.connect(user=user,
                                       password=password,
