@@ -1,5 +1,6 @@
 --Postgres SQL
 --QUERY TO DROP ALL TABLES
+
 DO $$ DECLARE
   r RECORD;
 BEGIN
