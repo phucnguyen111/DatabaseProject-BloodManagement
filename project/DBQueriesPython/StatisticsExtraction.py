@@ -17,7 +17,7 @@ def StatisticsExtraction (bloodType):
 
     except (Exception, psycopg2.Error) as error:
         if (connection):
-            print("Error inserting record into Blood:", error)
+            print("Error extracting statistics", error)
     finally:
         if (connection):
             cursor.close()
