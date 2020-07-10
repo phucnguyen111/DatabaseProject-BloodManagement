@@ -14,7 +14,7 @@ def getBloodAmount(bloodType):
         cursor.execute("""select TotalAmount from BloodGroup where BloodType = '{0}'""".format(bloodType))
         print('---executed')
         amount = cursor.fetchone()[0]
-        return amount
+        return amount*1000
 
     except (Exception, psycopg2.Error) as error:
         if (connection):
