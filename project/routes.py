@@ -27,7 +27,7 @@ def setup_routes(app):
     app.router.add_get('/request_blood', router_instance.request_blood)
 
     #app.router.add_post('/check_login_user', router_instance.check_login_user)
-    #app.router.add_post('/register_blood_donation', router_instance.register_blood_donation)
+    app.router.add_post('/register_blood_donation', router_instance.register_blood_donation)
     app.router.add_get('/register_blood_donation', router_instance.register_blood_donation)
 
     app.router.add_get('/show_statistic', router_instance.show_statistic)

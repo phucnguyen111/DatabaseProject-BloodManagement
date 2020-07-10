@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
 			if (this.readyState === 4 && this.status === 200){
 				console.log("Donor's register has sent to the server!");
 				console.log(this.responseText);
-				var jsonResponse = this.responseText;
+				var jsonResponse = JSON.parse(this.responseText);
 
 				/* Get value from the return JSON
 				var name = jsonResponse.name;
