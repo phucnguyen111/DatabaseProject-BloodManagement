@@ -213,24 +213,24 @@ class Router:
     '''
     async def show_statistic(self, request):
         Oplus_donor = '25'
-        Oplus_amount = '6000' + 'ml'
+        Oplus_amount = '6000' + ' ml'
         Ominus_donor = '25'
-        Ominus_amount = '6000' + 'ml'
+        Ominus_amount = '6000' + ' ml'
 
         Aplus_donor = '25'
-        Aplus_amount = '6000' + 'ml'
+        Aplus_amount = '6000' + ' ml'
         Aminus_donor = '25'
-        Aminus_amount = '6000' + 'ml'
+        Aminus_amount = '6000' + ' ml'
 
         Bplus_donor = '25'
-        Bplus_amount = '6000' + 'ml'
+        Bplus_amount = '6000' + ' ml'
         Bminus_donor = '25'
-        Bminus_amount = '6000' + 'ml'
+        Bminus_amount = '6000' + ' ml'
 
         ABplus_donor = '25'
-        ABplus_amount = '6000' + 'ml'
+        ABplus_amount = '6000' + ' ml'
         ABminus_donor = '25'
-        ABminus_amount = '6000' + 'ml'
+        ABminus_amount = '6000' + ' ml'
 
         resp = {'Oplus_donor': Oplus_donor, 'Oplus_amount': Oplus_amount,
                 'Ominus_donor': Ominus_donor, 'Ominus_amount': Ominus_amount,
