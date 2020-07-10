@@ -2,6 +2,10 @@
     --bg-color : #fff;
     --primary-color : #fc4141/*rgba(250,0,38,1)*/;
 }
+/*html{
+    position: relative;
+    min-height: 100%;
+}*/
 body{
     color:rgba(0, 0, 0, .65);
     font-family: 'Roboto', sans-serif;
@@ -10,9 +14,8 @@ body{
 a{
     text-decoration: none;
 }
-
 td,th{
-    padding:10px !important;
+    padding: 10px !important;
     text-align: center;
 }
 .m-btm{
@@ -36,9 +39,9 @@ td,th{
     margin-top:50px;
     margin-bottom:50px;
     border-radius: 8px;
-    width:26%;
+    width:25%;
     max-width:1200px;
-    min-width: 350px;
+    min-width: 300px;
     padding:20px;
 }
 .input-box-stat{
@@ -349,7 +352,7 @@ input::-webkit-inner-spin-button {
     color:#fff;
     text-align: center;
     width: 100%;
-    position: absolute;
+    position: absolute !important;
 }
 .footer a{
     color: #fff !important;
