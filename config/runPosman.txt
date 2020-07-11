@@ -1,0 +1,5 @@
+how to run postman:
++ python project/main.py
++ Open postman
++ Modify link according to which function you want to test
+EG: http://localhost:8081/register_blood_donation	
