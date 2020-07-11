@@ -14,6 +14,7 @@ from DBQueriesPython.requestBloodDB import requestBloodDB
 from DBQueriesPython.deleteBloodDB import deleteBlood
 from DBQueriesPython.deleteBloodRequestHistory import deleteBloodRequestHistory
 
+from DBQueriesPython.getBloodAmount import getBloodAmount
 #from views import success_register, success_request, fail_register, fail_request
 from datetime import date
 
@@ -212,33 +213,40 @@ class Router:
 
     '''
     async def show_statistic(self, request):
-        Oplus_donor = '25'
-        Oplus_amount = '6000' + 'ml'
-        Ominus_donor = '25'
-        Ominus_amount = '6000' + 'ml'
+        Op = getBloodAmount('O+')
+        Om = getBloodAmount('O-')
+        Ap = getBloodAmount('A+')
+        Am = getBloodAmount('A-')
+        Bp = getBloodAmount('B+')
+        Bm = getBloodAmount('B-')
+        ABp = getBloodAmount('AB+')
+        ABm = getBloodAmount('AB-')
 
-        Aplus_donor = '25'
-        Aplus_amount = '6000' + 'ml'
-        Aminus_donor = '25'
-        Aminus_amount = '6000' + 'ml'
+        print(Op)
+        print(Om)
+        print(Ap)
+        print(Am)
+        print(Bp)
+        print(Bm)
+        print(ABp)
+        print(ABm)
 
-        Bplus_donor = '25'
-        Bplus_amount = '6000' + 'ml'
-        Bminus_donor = '25'
-        Bminus_amount = '6000' + 'ml'
+        Oplus_amount = str(Op) + ' ml'
+        Ominus_amount = str(Om) + ' ml'
+        Aplus_amount = str(Ap) + ' ml'
+        Aminus_amount = str(Am) + ' ml'
+        Bplus_amount = str(Bp) + ' ml'
+        Bminus_amount = str(Bm) + ' ml'
+        ABplus_amount = str(ABp) + ' ml'
+        ABminus_amount = str(ABm) + ' ml'
 
-        ABplus_donor = '25'
-        ABplus_amount = '6000' + 'ml'
-        ABminus_donor = '25'
-        ABminus_amount = '6000' + 'ml'
-
-        resp = {'Oplus_donor': Oplus_donor, 'Oplus_amount': Oplus_amount,
-                'Ominus_donor': Ominus_donor, 'Ominus_amount': Ominus_amount,
-                'Aplus_donor': Aplus_donor, 'Aplus_amount': Aplus_amount,
-                'Aminus_donor': Aminus_donor, 'Aminus_amount': Aminus_amount,
-                'Bplus_donor': Bplus_donor, 'Bplus_amount': Bplus_amount,
-                'Bminus_donor': Bminus_donor, 'Bminus_amount': Bminus_amount,
-                'ABplus_donor': ABplus_donor, 'ABplus_amount': ABplus_amount,
-                'ABminus_donor': ABminus_donor, 'ABminus_amount': Ominus_amount,}
+        resp = {'Oplus_amount': Oplus_amount,
+                'Ominus_amount': Ominus_amount,
+                'Aplus_amount': Aplus_amount,
+                'Aminus_amount': Aminus_amount,
+                'Bplus_amount': Bplus_amount,
+                'Bminus_amount': Bminus_amount,
+                'ABplus_amount': ABplus_amount,
+                'ABminus_amount': Ominus_amount,}
 
         return json_response(resp, content_type='application/json', dumps=json.dumps)

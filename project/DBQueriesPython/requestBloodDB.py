@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 
 '''
 This function will update the BloodGroup table when a new request comes. It checks from the database to see if the stock can satisfy the request
@@ -58,11 +58,11 @@ def requestBloodDB(requestedType, requestedAmount):
     except (Exception, psycopg2.Error) as error:
         print("Error while processing bloodRequest from Hospital:", error)
         return -1
-    finally:
-        if (connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if (connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")
 
-# print(requestBloodDB("O+",4))
+# print(requestBloodDB("A+",8))
 

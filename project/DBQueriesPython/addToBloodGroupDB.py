@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function updates the amount of blood in the required blood group everytime new blood donation is created and is successful.
 
@@ -38,8 +38,10 @@ def addToBloodGroup (bgBloodType, bgAddedAmount):
         if(connection):
             print("Error inserting record into BloodGroup table: ", error)
             return 0
-    finally:
-        cursor.close()
-        connection.close()
-        print("PostgreSQL connection is closed")
+    # finally:
+    #     cursor.close()
+    #     connection.close()
+    #     print("PostgreSQL connection is closed")
+
+# addToBloodGroup("A+", 123.5)
 

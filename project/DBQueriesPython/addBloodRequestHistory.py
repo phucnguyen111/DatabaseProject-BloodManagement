@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function is used to record the hospitals' request for blood. Each time a hospital maké a request, the system will save that request's detail into this table
 @param[in]:     rbhHospitalID           Hospital ID of the hospital that is requesting blood history
@@ -33,8 +33,8 @@ def addBloodRequestHistory(rbhHospitalID, rbhBloodType, rbhRequestDate, rbhReque
         if(connection):
             print("Error inserting record into RequestBloodHistory table: ", error)
             return 0
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")

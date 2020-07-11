@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function is used to delete the hospitals' request for blood's history.
 @param[in]:     rbhHospitalID           Hospital ID of the hospital that is requesting blood history
@@ -20,10 +20,7 @@ def deleteBloodRequestHistory(rbhHospitalID, rbhBloodType, rbhRequestDate):
                                       database=database)
         cursor = connection.cursor()
 
-
-        print("Deleting Blood with the ID: ", bID)
-
-        sql_delete_query = """delete from Blood where HospitalID = %s and BloodType = %s and RequestDate = %s"""
+        sql_delete_query = """delete from RequestBloodHistory where HospitalID = %s and BloodType = %s and RequestDate = %s"""
         cursor.execute(sql_delete_query, (rbhHospitalID, rbhBloodType, rbhRequestDate))
         connection.commit()
         count = cursor.rowcount
@@ -32,11 +29,11 @@ def deleteBloodRequestHistory(rbhHospitalID, rbhBloodType, rbhRequestDate):
     except (Exception, psycopg2.Error) as error:
         print("Error deleting record from Blood:", error)
         return 0
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")
 
 #---------------------------------------------------------------
 #Return values:

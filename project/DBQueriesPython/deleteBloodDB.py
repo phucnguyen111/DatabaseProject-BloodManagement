@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function deletes the blood entry in the Blood database.
 NOTE: Practical use in the project is unclear. Need further ìnormation
@@ -32,8 +32,8 @@ def deleteBlood(perID, donationDate):
     except (Exception, psycopg2.Error) as error:
         print("Error deleting record from Blood:", error)
         return 0
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")

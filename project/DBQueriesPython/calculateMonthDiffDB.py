@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 
 '''
 This function checks for the donor's last donation to see whether he/she is qualified for the next donation
@@ -12,22 +12,15 @@ This function checks for the donor's last donation to see whether he/she is qual
 '''
 
 
-def calculateMonthDiff(donPerID):
+def calculateMonthDiff(donPerID, cursor):
     try:
-        connection = psycopg2.connect(user=user,
-                                      password=password,
-                                      host=host,
-                                      port=port,
-                                      database=database)
-        cursor = connection.cursor()
-
         cursor.execute("""select PersonalID from Blood where PersonalID = %s""", (donPerID,)
                         )  # Phai dung PersonalID o bang Blood ma khong dung bang Donor vi neu nguoi
                                                                                                 # hien lan dau da duoc them vao bang donor -> is_donor_exist is not None
                                                                                                 # -> jump to else -> tuy nhien, trong bang blood van chua co PersonalID cua
         latest_date = "None"                                                                                        # nguoi nay -> sql_get_latest_date_query se tra ve None
         is_donor_exist = cursor.fetchone()
-           # print(is_donor_exist)
+        # print(is_donor_exist)
         if is_donor_exist is None:
             return (-2, latest_date)
         else:
@@ -44,12 +37,16 @@ def calculateMonthDiff(donPerID):
     except (Exception, psycopg2.Error) as error:
         print("Error while calculating difference in months: ", error)
         return (-1, latest_date)
-    finally:
-        if (connection):
-            cursor.close()
-            connection.close()
 
-# print(calculateMonthDiff(123456))
+
+# connection = psycopg2.connect(user=user,
+#                                       password=password,
+#                                       host=host,
+#                                       port=port,
+#                                       database=database)
+# cursor = connection.cursor()
+#
+# print(calculateMonthDiff(123456, cursor))
 
 # ---------------------------------------------------------------
 # Return values:

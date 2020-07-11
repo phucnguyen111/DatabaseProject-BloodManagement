@@ -1,17 +1,10 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 NOTE:   Currently not used
 '''
-def isDonorExists(donPerID):
+def isDonorExists(donPerID, cursor):
     try:
-        connection = psycopg2.connect(user=user,
-                                      password=password,
-                                      host=host,
-                                      port=port,
-                                      database=database)
-        cursor = connection.cursor()
-
         sql_select_query = """select * from Donor where PersonalID = %s"""
         cursor.execute(sql_select_query, (donPerID,))
         #data = cursor.fetchall()
@@ -28,8 +21,3 @@ def isDonorExists(donPerID):
 
     except (Exception, psycopg2.Error) as error:
         print("Error while checking if the donor ever donated", error)
-    finally:
-        if (connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")

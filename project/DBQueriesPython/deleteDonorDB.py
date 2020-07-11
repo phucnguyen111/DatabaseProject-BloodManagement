@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function is used to delete a donor. 
 @param[in]:     donPerID                Donor's personal ID
@@ -29,11 +29,11 @@ def deleteDonor(donPerID):
 
     except (Exception, psycopg2.Error) as error:
         print("Error deleting record from Donor:", error)
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")
 
 # deleteDonor(123456)
 

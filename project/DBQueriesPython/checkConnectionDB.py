@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 try:
     connection = psycopg2.connect(user=user,password=password,host=host,port=port,database=database)
     cursor = connection.cursor()

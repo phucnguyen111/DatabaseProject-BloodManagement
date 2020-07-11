@@ -1,5 +1,5 @@
 user = "postgres"
-password = "ha3171999"
+password = "01689240658"
 host = "localhost"
 port = "5432"
-database = "BloodBank"
+database = "BloodWork"

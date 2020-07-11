@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function is used to populate the Hospital table when donor register blood donation.
 @param[in]:     hName        Hospital's name
@@ -40,11 +40,11 @@ def addHospital(hName, hAddress, hEmail, hContact):
         if(connection):
             print("Error inserting record into Hospital table:", error)
             return 0
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")
 
 #---------------------------------------------------------------
 #Return values:

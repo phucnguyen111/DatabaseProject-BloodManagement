@@ -1,5 +1,5 @@
 import psycopg2
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from databaseInfo import user, password, host, port, database
 '''
 This function is used to populate the addDonor table when donor register blood donation.
 If addDonor is successful, we continue to addBloodDB
@@ -38,7 +38,16 @@ def addDonor(donPerID, donName, donGender, donAddress, donEmail, donContact):
         if(connection):
             print("Error inserting record into Donor:", error)
             return 0
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+
+# donPerID = 112233
+# donName = "Luke D'angelo"
+# donGender = "Male"
+# donAddress = "Kingston str. , CA"
+# donEmail = "LukeAngel@yahoo.com"
+# donContact = "1299102A"
+#
+# addDonor(donPerID, donName, donGender, donAddress, donEmail, donContact)

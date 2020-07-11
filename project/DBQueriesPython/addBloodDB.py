@@ -1,6 +1,6 @@
 import psycopg2
-from DBQueriesPython.calculateMonthDiffDB import calculateMonthDiff
-from DBQueriesPython.databaseInfo import user, password, host, port, database
+from calculateMonthDiffDB import calculateMonthDiff
+from databaseInfo import user, password, host, port, database
 '''
 This function is used to add a blood entry to the Blood database.
 It first checks whether the donor's last donation was more than 3 months ago. If not then addition of blood is not allowed.
@@ -25,7 +25,7 @@ def addBlood(bPerID, bBloodType, bAmount):
                                       port=port,
                                       database=database)
         cursor = connection.cursor()
-        (monthDiff, latest_date) = calculateMonthDiff(bPerID)
+        (monthDiff, latest_date) = calculateMonthDiff(bPerID, cursor)
         if(monthDiff >=0 and monthDiff < 3): #Donor da ton tai va da hien mau trong vong 3 thang tro lai day
             print(" --> Last donated was less than 3 months")
             return (-1, latest_date)
@@ -45,8 +45,13 @@ def addBlood(bPerID, bBloodType, bAmount):
         if(connection):
             print("Error inserting record into Blood:", error)
             return (0, latest_date)
-    finally:
-        if(connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+    # finally:
+    #     if(connection):
+    #         cursor.close()
+    #         connection.close()
+    #         print("PostgreSQL connection is closed")
+
+# bPerID = 112233
+# bBloodType = "A+"
+# bAmount = 123.5
+# addBlood(bPerID,bBloodType,bAmount)
